@@ -1,0 +1,24 @@
+<h1>Listing turns</h1>
+
+<%= link_to 'Add turn', new_turn_path %>
+ 
+<table border="1">
+<tr>
+  <th>Turn</th>
+  <th>On</th> 
+  <th>Off</th>
+  <th>Hours</th>
+  <th colspan="2"></th>
+</tr>
+ 
+  <% @turns.each do |turn| %>
+    <tr>
+      <td><%= turn.name %></td>
+      <td><%= turn.start_time %></td>
+      <td><%= turn.finish_time %></td>
+      <td><%= turn.hours %></td>
+      <td><%= link_to 'Show', turn_path(turn) %></td>
+      <td><%= link_to 'Edit', edit_turn_path(turn) %></td>
+    </tr>
+  <% end %>
+</table>
