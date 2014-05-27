@@ -1,20 +1,25 @@
-<p><%= @turn.name %> On <%= @turn.time_on %> Off <%= @turn.time_off %></p>
+<h1><%= @turn.name %></h1>
 
-<p>Hours: <%= @turn.hours %>
+<pre>
+        On:  <%= @turn.time_on %>
+       Off:  <%= @turn.time_off %>
+  Duration:  <%= @turn.duration %>
+</pre>
+
 
 <table border="1">
-<tr>
-  <th>Turn</th>
-  <th>On</th> 
-  <th>Off</th>
-  <th>Hours</th>
-</tr>
-<tr>
-  <td><%= @turn.name %></td>
-  <td><%= @turn.start_time %></td>
-  <td><%= @turn.finish_time %></td>
-  <td><%= @turn.hours %></td>
-</tr>
+  <tr>
+    <th>Turn</th>
+    <th>On</th>
+    <th>Off</th>
+    <th>Hours</th>
+  </tr>
+  <tr>
+    <td><%= @turn.name %></td>
+    <td><%= @turn.start_time %></td>
+    <td><%= @turn.finish_time %></td>
+    <td><%= @turn.hours %></td>
+  </tr>
 </table>
 
 <%= link_to 'Back', turns_path %> | <%= link_to 'Edit', edit_turn_path(@turn) %>

@@ -1,34 +1,5 @@
 <h1>Edit Turn</h1>
 
-<%= form_for :turn, url: turn_path(@turn), method: :patch do |f| %>
-  <% if @turn.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@turn.errors.count, "error") %> prohibited
-      this turn from being saved:</h2>
-    <ul>
-    <% @turn.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <p>
-    <%= @turn.name %>
-  </p>
-  
-  <p>
-    <%= f.label :time_on %><br/>
-    <%= f.text_field :time_on %>
-  </p>
-  
-  <p>
-    <%= f.label :time_off %><br/>
-    <%= f.text_field :time_off %>
-  </p>
-  
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Back', turns_path %>

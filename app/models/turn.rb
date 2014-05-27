@@ -1,4 +1,3 @@
-#
 class Turn < ActiveRecord::Base
   validates :name, :time_on, :time_off, presence: true
 

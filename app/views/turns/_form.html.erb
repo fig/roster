@@ -1,0 +1,36 @@
+<%= form_for @turn do |f| %>
+    <% if @turn.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@turn.errors.count, 'error') %> prohibited
+            this turn from being saved:</h2>
+          <ul>
+            <% @turn.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <p>
+      <% if @turn.name.nil? %>
+          <%= f.label :name %><br/>
+          <%= f.text_field :name %>
+      <% else %>
+          <%= @turn.name %>
+      <% end %>
+    </p>
+
+    <p>
+      <%= f.label :time_on %><br/>
+      <%= f.text_field :time_on %>
+    </p>
+
+    <p>
+      <%= f.label :time_off %><br/>
+      <%= f.text_field :time_off %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

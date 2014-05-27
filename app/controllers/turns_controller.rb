@@ -7,11 +7,7 @@ class TurnsController < ApplicationController
   def create
     @turn = Turn.new(turn_params)
 
-    if @turn.save
-      redirect_to @turn
-    else
-      render 'new'
-    end
+    @turn.save ? redirect_to(@turn) : render('new')
   end
 
   def show
@@ -29,11 +25,14 @@ class TurnsController < ApplicationController
   def update
     @turn = Turn.find(params[:id])
 
-    if @turn.update(turn_params)
-      redirect_to @turn
-    else
-      render 'edit'
-    end
+    @turn.update(turn_params) ? redirect_to(@turn) : render('edit')
+  end
+
+  def destroy
+    @turn = Turn.find(params[:id])
+    @turn.destroy
+
+    redirect_to turns_path
   end
 
   private
