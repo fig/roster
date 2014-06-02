@@ -1,11 +1,12 @@
-#
 class TurnsController < ApplicationController
+
   def new
     @turn = Turn.new
   end
 
   def create
     @turn = Turn.new(turn_params)
+    @turn.name.upcase!
 
     @turn.save ? redirect_to(@turn) : render('new')
   end

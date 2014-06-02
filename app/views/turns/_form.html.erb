@@ -11,14 +11,14 @@
         </div>
     <% end %>
 
-    <p>
+
       <% if @turn.name.nil? %>
-          <%= f.label :name %><br/>
-          <%= f.text_field :name %>
+        <p> <%= f.label :name %><br/>
+          <%= f.text_field :name %></p>
       <% else %>
-          <%= @turn.name %>
+          <h2><%= @turn.name %></h2>
+        <%= f.hidden_field(:name) %>
       <% end %>
-    </p>
 
     <p>
       <%= f.label :time_on %><br/>

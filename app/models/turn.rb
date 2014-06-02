@@ -1,11 +1,24 @@
 class Turn < ActiveRecord::Base
-  validates :name, :time_on, :time_off, presence: true
+
+  has_and_belongs_to_many :Weeks
+
+  validates :name, presence: true
+  validates :time_on, :time_off, presence: true, unless: :day_off?
 
   before_save :format_times
 
   private
 
+  def day_off?
+    self.name == 'RD' or self.name == 'OFF'
+
+  end
+
   def format_times
+    if day_off?
+      self.time_on = self.time_off = nil
+      return true
+    end
     self.duration = diff(time_on, time_off)
     self.hours = duration_in_words(duration)
     self.start_time = time_on.strftime('%H:%M')
