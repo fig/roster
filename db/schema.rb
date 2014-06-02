@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522032859) do
+ActiveRecord::Schema.define(version: 20140528103808) do
 
   create_table "turns", force: true do |t|
     t.string   "name"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20140522032859) do
     t.string   "hours"
     t.string   "start_time"
     t.string   "finish_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "turns_weeks", id: false, force: true do |t|
+    t.integer "turn_id"
+    t.integer "week_id"
+  end
+
+  create_table "weeks", force: true do |t|
+    t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
