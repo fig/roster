@@ -13,10 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20140528103808) do
 
-  create_table "turns", force: true do |t|
+  create_table "turns", force: :cascade do |t|
     t.string   "name"
-    t.time     "time_on"
-    t.time     "time_off"
+    t.string   "time_on"
+    t.string   "time_off"
     t.time     "duration"
     t.string   "hours"
     t.string   "start_time"
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(version: 20140528103808) do
     t.datetime "updated_at"
   end
 
-  create_table "turns_weeks", id: false, force: true do |t|
+  create_table "turns_weeks", id: false, force: :cascade do |t|
     t.integer "turn_id"
     t.integer "week_id"
   end
 
-  create_table "weeks", force: true do |t|
+  create_table "weeks", force: :cascade do |t|
     t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"

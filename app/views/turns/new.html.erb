@@ -1,5 +1,27 @@
-<h1>New Turn</h1>
+<h1>Add Turns</h1>
 
-<%= render 'form' %>
+<%= form_for :turn, url: turns_path do |f| %>
 
+    <% if @turn.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@turn.errors.count, "error") %> prohibited
+            this turn from being saved:</h2>
+          <ul>
+            <% @turn.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+        <p>
+          Turn: VG<%= f.text_field :name %>
+          on:<%= f.text_field :time_on %>
+          off:<%= f.text_field :time_off %>
+          <br/>
+   
+
+    </p>
+    <%= f.submit %>
+<% end %>
 <%= link_to 'Back', turns_path %>

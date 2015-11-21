@@ -6,8 +6,6 @@ class TurnsController < ApplicationController
 
   def create
     @turn = Turn.new(turn_params)
-    @turn.name.upcase!
-
     @turn.save ? redirect_to(@turn) : render('new')
   end
 
@@ -39,6 +37,6 @@ class TurnsController < ApplicationController
   private
 
   def turn_params
-    params.require(:turn).permit(:name, :time_on, :time_off)
+    params.require(:turn).permit( :name, :time_on, :time_off)
   end
 end
