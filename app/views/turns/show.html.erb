@@ -1,8 +1,8 @@
 <h1><%= @turn.name %></h1>
 
 <pre>
-        On:  <%= @turn.time_on %>
-       Off:  <%= @turn.time_off %>
+        On:  <%= @turn.start_time %>
+       Off:  <%= @turn.finish_time %>
   Duration:  <%= @turn.duration %>
 </pre>
 
@@ -16,8 +16,8 @@
   </tr>
   <tr>
     <td><%= @turn.name %></td>
-    <td><%= @turn.start_time %></td>
-    <td><%= @turn.finish_time %></td>
+    <td><%= @turn.time_on %></td>
+    <td><%= @turn.time_off %></td>
     <td><%= @turn.hours %></td>
   </tr>
 </table>

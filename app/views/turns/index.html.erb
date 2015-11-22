@@ -14,8 +14,8 @@
   <% @turns.each do |turn| %>
       <tr>
         <td><%= turn.name %></td>
-        <td><%= turn.start_time %></td>
-        <td><%= turn.finish_time %></td>
+        <td><%= turn.time_on %></td>
+        <td><%= turn.time_off %></td>
         <td><%= turn.hours %></td>
         <td><%= link_to 'Show', turn_path(turn) %></td>
         <td><%= link_to 'Edit', edit_turn_path(turn) %></td>

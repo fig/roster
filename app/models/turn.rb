@@ -21,15 +21,17 @@ class Turn < ActiveRecord::Base
       self.time_on = self.time_off = nil
       return true
     end
-    self.duration = diff(time_on, time_off)
+
+    self.start_time = timify(time_on)
+    self.finish_time = timify(time_off)
+    self.duration = diff(start_time, finish_time)
     self.hours = duration_in_words(duration)
-    self.start_time = time_on
-    self.finish_time = time_off
+
   end
 
   def diff(on, off)
-    on = Time.strptime(on, '%H%M')
-    off = Time.strptime(off, '%H%M')
+    #on = Time.strptime(on, '%H%M')
+    #off = Time.strptime(off, '%H%M')
     off += 1.day if off < on
     off - on
   end
@@ -38,5 +40,9 @@ class Turn < ActiveRecord::Base
     hh, ss = duration.divmod(3600)
     mm = ss / 60
     format('%d:%02d', hh, mm)
+  end
+
+  def timify(str)
+    Time.strptime(str, '%H%M')
   end
 end
