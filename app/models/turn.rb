@@ -25,17 +25,18 @@ class Turn < ActiveRecord::Base
     self.hours = duration_in_words(duration)
     self.start_time = time_on
     self.finish_time = time_off
-
-    def diff(on, off)
-      on = Time.strptime(on, '%H%M')
-      off = Time.strptime(off, '%H%M')
-      off += 1.day if off < on
-      off - on
-    end
-
-    def duration_in_words(duration)
-      hh, ss = duration.divmod(3600)
-      mm = ss / 60
-      format('%d:%02d', hh, mm)
-    end
   end
+
+  def diff(on, off)
+    on = Time.strptime(on, '%H%M')
+    off = Time.strptime(off, '%H%M')
+    off += 1.day if off < on
+    off - on
+  end
+
+  def duration_in_words(duration)
+    hh, ss = duration.divmod(3600)
+    mm = ss / 60
+    format('%d:%02d', hh, mm)
+  end
+end
