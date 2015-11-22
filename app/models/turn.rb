@@ -30,8 +30,6 @@ class Turn < ActiveRecord::Base
   end
 
   def diff(on, off)
-    #on = Time.strptime(on, '%H%M')
-    #off = Time.strptime(off, '%H%M')
     off += 1.day if off < on
     off - on
   end
