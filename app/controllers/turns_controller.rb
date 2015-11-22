@@ -14,7 +14,7 @@ class TurnsController < ApplicationController
   end
 
   def index
-    @turns = Turn.all
+    @turns = Turn.all.order :name
   end
 
   def edit
@@ -29,7 +29,6 @@ class TurnsController < ApplicationController
   def destroy
     @turn = Turn.find(params[:id])
     @turn.destroy
-
     redirect_to turns_path
   end
 
