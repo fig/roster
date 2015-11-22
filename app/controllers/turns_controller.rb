@@ -23,7 +23,6 @@ class TurnsController < ApplicationController
 
   def update
     @turn = Turn.find(params[:id])
-
     @turn.update(turn_params) ? redirect_to(@turn) : render('edit')
   end
 
@@ -37,6 +36,6 @@ class TurnsController < ApplicationController
   private
 
   def turn_params
-    params.require(:turn).permit( :name, :time_on, :time_off)
+    params.require(:turn).permit(:name, :time_on, :time_off)
   end
 end
