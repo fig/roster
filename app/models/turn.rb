@@ -3,6 +3,8 @@ class Turn < ActiveRecord::Base
   require 'time'
 
   has_and_belongs_to_many :Weeks
+  
+  before_validation :remove_non_digits
 
   validates :name,
               presence: true
@@ -13,6 +15,10 @@ class Turn < ActiveRecord::Base
   before_save :format_times
 
   private
+  
+  def remove_non_digits
+    [self.time_on, self.time_off].each { |t| t.gsub!(/\D/,'') }
+  end
 
   def day_off?
     self.name.upcase!
