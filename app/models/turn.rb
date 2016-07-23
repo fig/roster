@@ -4,12 +4,11 @@ class Turn < ActiveRecord::Base
 
   has_and_belongs_to_many :Weeks
 
-  validates :name, presence: true
-  validates :time_on, :time_off, format: { with: /([01]\d|2[0-3])([0-5]\d)/}, 
-                                 presence: true, unless: :day_off?
-  
-  #### TODO - validate time_on & time_off as valid times
-  #### probably with 'validates_format_of'
+  validates :name,
+              presence: true
+  validates :time_on, :time_off,
+              format: { with: /([01]\d|2[0-3])([0-5]\d)/ },
+              unless: :day_off?
 
   before_save :format_times
 
