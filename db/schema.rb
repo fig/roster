@@ -11,29 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140528103808) do
+ActiveRecord::Schema.define(version: 20151122095715) do
 
-  create_table 'turns', force: :cascade do |t|
-    t.string 'name'
-    t.string 'time_on'
-    t.string 'time_off'
-    t.time 'duration'
-    t.string 'hours'
-    t.string 'start_time'
-    t.string 'finish_time'
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
+  create_table "turns", force: :cascade do |t|
+    t.string   "name"
+    t.string   "time_on"
+    t.string   "time_off"
+    t.time     "duration"
+    t.string   "hours"
+    t.time     "start_time"
+    t.time     "finish_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table 'turns_weeks', id: false, force: :cascade do |t|
-    t.integer 'turn_id'
-    t.integer 'week_id'
+  create_table "turns_weeks", id: false, force: :cascade do |t|
+    t.integer "turn_id"
+    t.integer "week_id"
   end
 
-  create_table 'weeks', force: :cascade do |t|
-    t.integer 'number'
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
+  create_table "weeks", force: :cascade do |t|
+    t.integer  "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
