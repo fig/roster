@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class TurnsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "routes request correctly" do
+    get 'index'
+    assert_response :success
+  end
 end
