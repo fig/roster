@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Roster</title>
+  <title><%= full_title(yield(:title)) %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Train driver's roster assistant" %>">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
+  <%= render 'layouts/shim' %>
 <body>
-
-<%= yield %>
-
+<%= render 'layouts/header' %>
+  <div class="container">
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+    <%= debug(params) if Rails.env.development? %>
+  </div>
 </body>
 </html>
