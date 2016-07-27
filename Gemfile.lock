@@ -331,7 +331,7 @@ DEPENDENCIES
   faker (= 1.4.2)
   fog (= 1.32.0)
   guard
-  guard-livereload
+  guard-livereload (~> 2.5)
   guard-minitest (= 2.3.1)
   jbuilder (= 2.2.3)
   jquery-rails (= 4.0.3)
