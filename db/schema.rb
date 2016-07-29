@@ -25,15 +25,4 @@ ActiveRecord::Schema.define(version: 20160728214840) do
     t.datetime "updated_at"
   end
 
-  create_table "turns_weeks", id: false, force: :cascade do |t|
-    t.integer "turn_id"
-    t.integer "week_id"
-  end
-
-  create_table "weeks", force: :cascade do |t|
-    t.integer  "number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end

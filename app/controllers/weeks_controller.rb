@@ -1,2 +1,0 @@
-class WeeksController < ApplicationController
-end
