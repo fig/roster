@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122095715) do
+ActiveRecord::Schema.define(version: 20160728214840) do
 
   create_table "turns", force: :cascade do |t|
     t.string   "name"
-    t.string   "time_on"
-    t.string   "time_off"
+    t.string   "time_on",     limit: 4
+    t.string   "time_off",    limit: 4
     t.time     "duration"
     t.string   "hours"
     t.time     "start_time"

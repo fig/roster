@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title><%= full_title(yield(:title)) %></title>
   <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Train driver's roster assistant" %>">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 <body>
