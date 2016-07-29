@@ -4,7 +4,7 @@ require 'time'
 
 has_and_belongs_to_many :Weeks
 
-before_validation :remove_non_digits
+before_validation :remove_non_digits, :pad_with_zero
 
 validates :name,
   presence: true
@@ -19,6 +19,13 @@ private
   def remove_non_digits
     [self.time_on, self.time_off].each { |t| t.gsub!(/\D/,'') }
   end
+
+  def pad_with_zero
+     self.time_on = self.time_on.rjust(4,'0')
+     self.time_off = self.time_off.rjust(4,'0')
+    #[self.time_on, self.time_off].each { |t| t = t.rjust(4, '0') }
+  end
+
 
   def day_off?
     self.name.upcase!
