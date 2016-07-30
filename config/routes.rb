@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   resources :turns
-  
+  resources :lines
+
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
