@@ -1,36 +1,31 @@
+# Turn class
 class Turn < ActiveRecord::Base
+  require 'time'
 
-require 'time'
+  before_validation :remove_non_digits, :pad_with_zero
 
-before_validation :remove_non_digits, :pad_with_zero
+  validates :name, presence: true
+  validates :time_on, :time_off,
+            format: { with: /([01]\d|2[0-3])([0-5]\d)/ },
+            unless: :day_off?
 
-validates :name,
-  presence: true
-validates :time_on, :time_off,
-  format: { with: /([01]\d|2[0-3])([0-5]\d)/ },
-  unless: :day_off?
+  before_save :format_times
 
-before_save :format_times
-
-private
+  private
 
   def remove_non_digits
-    [self.time_on, self.time_off].each { |t| t.gsub!(/\D/,'') }
+    [time_on, time_off].each { |t| t.gsub!(/\D/, '') }
   end
 
   def pad_with_zero
-    if self.time_on.size == 3
-      self.time_on = self.time_on.rjust(4,'0')
-    end
-    if self.time_off.size == 3
-      self.time_off = self.time_off.rjust(4,'0')
-    end
+    self.time_on = time_on.rjust(4, '0')
+    self.time_off = time_off.rjust(4, '0')
+    # [self.time_on, self.time_off].each { |t| t = t.rjust(4, '0') }
   end
 
-
   def day_off?
-    self.name.upcase!
-    self.name == 'RD' or self.name == 'OFF' or self.name.include?('EX')
+    name.upcase!
+    name == 'RD' || name == 'OFF' || name.include?('EX')
   end
 
   def format_times
