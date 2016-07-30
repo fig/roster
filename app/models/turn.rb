@@ -2,8 +2,6 @@ class Turn < ActiveRecord::Base
 
 require 'time'
 
-has_and_belongs_to_many :Weeks
-
 before_validation :remove_non_digits, :pad_with_zero
 
 validates :name,
