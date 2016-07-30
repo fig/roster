@@ -14,11 +14,12 @@
 <%= form_for @turn, html: {class: "form-inline"} do |f| %>
 
   <div class="form-group">
-  <% if @turn.name.nil? %>
+    <% if (@turn.name) or (@turn.name.nil?) %>
       <%= f.label :name %>
       <%= f.text_field :name, class:"form-control", autofocus: true %>
     <% else %>
       <%= f.label :name, class: "sr-only" %>
+      <%= f.text_field :name, class:"hidden" %>
       <p class="form-control-static"><%= @turn.name %></p>
     <% end %>
   </div>

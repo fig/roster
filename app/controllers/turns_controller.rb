@@ -2,12 +2,12 @@ class TurnsController < ApplicationController
 
   def new
     @turn = Turn.new
-    @turns = Turn.all.order updated_at: :desc 
+    @turns = Turn.all.order updated_at: :desc
   end
 
   def create
     @turn = Turn.new(turn_params)
-    @turn.save ? redirect_to(action: :new) : render('new')
+    @turn.save ? redirect_to(action: 'new') : render('new')
   end
 
   def show
