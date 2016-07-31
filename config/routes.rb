@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   resources :lines
   resources :turns
-  resources :lines
 
   get 'welcome/index'
 

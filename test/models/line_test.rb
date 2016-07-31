@@ -7,6 +7,6 @@ class LineTest < ActiveSupport::TestCase
 
   test 'should not save line without number' do
     @line = Line.new
-    assert_not line.save, 'Saved the line without a name'
+    assert_not @line.save, 'Saved the line without a name'
   end
 end

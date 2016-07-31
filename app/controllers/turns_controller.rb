@@ -1,5 +1,4 @@
 class TurnsController < ApplicationController
-
   def new
     @turn = Turn.new
     @turns = Turn.all.order updated_at: :desc

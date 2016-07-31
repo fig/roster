@@ -1,6 +1,5 @@
 class Line < ActiveRecord::Base
 
-validates :number,
-  presence: true
+validates :number, presence: true
 
 end

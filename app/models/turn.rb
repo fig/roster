@@ -1,4 +1,3 @@
-# Turn class
 class Turn < ActiveRecord::Base
   require 'time'
 
@@ -18,8 +17,8 @@ class Turn < ActiveRecord::Base
   end
 
   def pad_with_zero
-    self.time_on = time_on.rjust(4, '0')
-    self.time_off = time_off.rjust(4, '0')
+    self.time_on = time_on.rjust(4, '0') if time_on.size == 3
+    self.time_off = time_off.rjust(4, '0') if time_off.size == 3
     # [self.time_on, self.time_off].each { |t| t = t.rjust(4, '0') }
   end
 
