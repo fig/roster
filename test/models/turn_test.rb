@@ -1,20 +1,19 @@
 require 'test_helper'
 
 class TurnTest < ActiveSupport::TestCase
-
   def setup
     @turn = Turn.new name: '01', time_on: '1200', time_off: '1300'
   end
 
   test 'should pad with leading zero' do
     @turn.time_on = '500'
-    @turn.validate
+    @turn.valid?
     assert_equal '0500', @turn.time_on
   end
 
   test 'should strip non-digits from times' do
     @turn.time_on = '09:00'
-    @turn.validate
+    @turn.valid?
     assert_equal '0900', @turn.time_on
   end
 
