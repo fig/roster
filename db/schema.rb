@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730015223) do
+ActiveRecord::Schema.define(version: 20160731150204) do
 
   create_table "lines", force: :cascade do |t|
     t.string   "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "lines_turns", id: false, force: :cascade do |t|
+    t.integer "line_id"
+    t.integer "turn_id"
+  end
+
+  add_index "lines_turns", ["line_id", "turn_id"], name: "index_lines_turns_on_line_id_and_turn_id"
 
   create_table "turns", force: :cascade do |t|
     t.string   "name"

@@ -1,5 +1,4 @@
 class Line < ActiveRecord::Base
-
-validates :number, presence: true
-
+  has_and_belongs_to_many(:turns)
+  validates :number, presence: true
 end

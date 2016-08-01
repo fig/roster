@@ -1,4 +1,6 @@
 class Turn < ActiveRecord::Base
+  has_and_belongs_to_many(:lines)
+
   require 'time'
 
   before_validation :remove_non_digits, :pad_with_zero
