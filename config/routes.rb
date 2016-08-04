@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :base_rosters
   resources :lines
   resources :turns
 

@@ -3,7 +3,9 @@ class Turn < ActiveRecord::Base
 
   require 'time'
 
-  before_validation :remove_non_digits, :pad_with_zero
+  before_validation :remove_non_digits,
+                    :pad_with_zero,
+                    unless: :day_off?
 
   validates :name, presence: true
   validates :time_on, :time_off,
@@ -26,6 +28,7 @@ class Turn < ActiveRecord::Base
 
   def day_off?
     name.upcase!
+    # ['RD', 'OFF', /.*EX.*/].include? name
     name == 'RD' || name == 'OFF' || name.include?('EX')
   end
 
@@ -34,9 +37,9 @@ class Turn < ActiveRecord::Base
       self.time_on = self.time_off = nil
       return true
     end
-    self.start_time = timify(time_on)
-    self.finish_time = timify(time_off)
-    self.duration = diff(start_time, finish_time)
+    # self.start_time = timify(time_on)
+    # self.finish_time = timify(time_off)
+    self.duration = diff(timify(time_on), timify(time_off))
     self.hours = duration_in_words(duration)
   end
 
