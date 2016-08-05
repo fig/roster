@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Base Rosters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Version</th>
+      <th>Depot</th>
+      <th>Link</th>
+      <th>Duration</th>
+      <th>Type</th>
+      <th>Commencement date</th>
+      <th>Number of lines</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @base_rosters.each do |base_roster| %>
+      <tr>
+        <td><%= base_roster.name %></td>
+        <td><%= base_roster.version %></td>
+        <td><%= base_roster.depot %></td>
+        <td><%= base_roster.link %></td>
+        <td><%= base_roster.duration %></td>
+        <td><%= base_roster.type %></td>
+        <td><%= base_roster.commencement_date %></td>
+        <td><%= base_roster.number_of_lines %></td>
+        <td><%= link_to 'Show', base_roster %></td>
+        <td><%= link_to 'Edit', edit_base_roster_path(base_roster) %></td>
+        <td><%= link_to 'Destroy', base_roster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Base roster', new_base_roster_path %>

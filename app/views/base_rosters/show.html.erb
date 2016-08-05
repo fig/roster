@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @base_roster.name %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @base_roster.version %>
+</p>
+
+<p>
+  <strong>Depot:</strong>
+  <%= @base_roster.depot %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @base_roster.link %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @base_roster.duration %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @base_roster.type %>
+</p>
+
+<p>
+  <strong>Commencement date:</strong>
+  <%= @base_roster.commencement_date %>
+</p>
+
+<p>
+  <strong>Number of lines:</strong>
+  <%= @base_roster.number_of_lines %>
+</p>
+
+<%= link_to 'Edit', edit_base_roster_path(@base_roster) %> |
+<%= link_to 'Back', base_rosters_path %>

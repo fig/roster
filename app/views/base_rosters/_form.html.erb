@@ -1,0 +1,49 @@
+<%= form_for(@base_roster) do |f| %>
+  <% if @base_roster.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@base_roster.errors.count, "error") %> prohibited this base_roster from being saved:</h2>
+
+      <ul>
+      <% @base_roster.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :version %><br>
+    <%= f.text_field :version %>
+  </div>
+  <div class="field">
+    <%= f.label :depot %><br>
+    <%= f.text_field :depot %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.number_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :commencement_date %><br>
+    <%= f.date_select :commencement_date %>
+  </div>
+  <div class="field">
+    <%= f.label :number_of_lines %><br>
+    <%= f.text_field :number_of_lines %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
