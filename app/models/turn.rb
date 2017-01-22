@@ -20,6 +20,7 @@ class Turn < ActiveRecord::Base
     self.time_on = time_on.rjust(4, '0') if time_on.size == 3
     self.time_off = time_off.rjust(4, '0') if time_off.size == 3
     # [self.time_on, self.time_off].each { |t| t = t.rjust(4, '0') }
+    # [TODO] Consider using " sprintf '%04d' "
   end
 
   def day_off?
