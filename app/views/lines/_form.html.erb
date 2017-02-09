@@ -12,9 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :number %><br>
-    <%= f.text_field :number %>
+    <%= f.label :number %>
+    <%= f.text_field :number, size: 4 %>
+    <%= f.label :sun %>
+    <%= f.text_field :sun, size: 4 %>
+    <%= f.label :mon %>
+    <%= f.text_field :mon, size: 4 %>
+    <%= f.label :tue %>
+    <%= f.text_field :tue, size: 4 %>
+    <%= f.label :wed %>
+    <%= f.text_field :wed, size: 4 %>
+    <%= f.label :thu %>
+    <%= f.text_field :thu, size: 4 %>
+    <%= f.label :fri %>
+    <%= f.text_field :fri, size: 4 %>
+    <%= f.label :sat %>
+    <%= f.text_field :sat, size: 4 %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

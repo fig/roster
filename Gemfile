@@ -19,22 +19,21 @@ gem 'jbuilder', '2.2.3'
 gem 'net-ssh'
 gem 'spring', '1.1.3'
 gem 'sdoc', '0.4.0', group: :doc
-gem 'guard-livereload', '~> 2.5', require: false
-gem "better_errors"
-gem "binding_of_caller"
+gem 'rails-erd'
 group :development, :test do
-gem 'sqlite3', '1.3.9'
-gem 'byebug', '3.4.0'
-gem 'guard'
-gem 'awesome_print', :require => 'ap'
+  gem 'web-console'
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem 'sqlite3', '1.3.9'
+  gem 'guard'
+  gem 'awesome_print', :require => 'ap'
 end
 group :test do
-gem 'minitest-reporters', '~> 1.1.0'
-gem 'mini_backtrace', '0.1.3'
-gem 'guard-minitest', '2.3.1'
+  gem 'minitest-reporters', '~> 1.1.0'
+  gem 'mini_backtrace', '0.1.3'
+  gem 'guard-minitest', '2.3.1'
 end
 group :production do
-gem 'pg', '0.17.1'
-gem 'rails_12factor', '0.0.2'
-gem 'puma', '2.11.1'
+  gem 'pg', '0.17.1'
+  gem 'rails_12factor', '0.0.2'
+  gem 'puma', '2.11.1'
 end

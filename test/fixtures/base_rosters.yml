@@ -5,17 +5,12 @@ one:
   version: MyString
   depot: MyString
   link: MyString
-  duration: 1
-  type: 
+  duration: 13
   commencement_date: 2016-08-01
-  number_of_lines: 
-
 two:
   name: MyString
   version: MyString
   depot: MyString
   link: MyString
-  duration: 1
-  type: 
+  duration: 13
   commencement_date: 2016-08-01
-  number_of_lines: 

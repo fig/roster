@@ -1,7 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  number: MyString
+  number: "1"
+  sun: ""
+  mon: ""
+  tue: ""
+  wed: ""
+  thu: ""
+  fri: ""
+  sat: ""
+  base_roster_id: 1
 
 two:
-  number: MyString
+  number: "2"
+  sun: ""
+  mon: ""
+  tue: ""
+  wed: ""
+  thu: ""
+  fri: ""
+  sat: ""
+  base_roster_id: 1

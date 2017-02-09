@@ -18,7 +18,7 @@ class BaseRostersControllerTest < ActionController::TestCase
 
   test "should create base_roster" do
     assert_difference('BaseRoster.count') do
-      post :create, base_roster: { commencement_date: @base_roster.commencement_date, depot: @base_roster.depot, duration: @base_roster.duration, link: @base_roster.link, name: @base_roster.name, number_of_lines: @base_roster.number_of_lines, type: @base_roster.type, version: @base_roster.version }
+      post :create, base_roster: { commencement_date: @base_roster.commencement_date, depot: @base_roster.depot, duration: @base_roster.duration, link: @base_roster.link, name: @base_roster.name, version: @base_roster.version }
     end
 
     assert_redirected_to base_roster_path(assigns(:base_roster))
@@ -35,7 +35,7 @@ class BaseRostersControllerTest < ActionController::TestCase
   end
 
   test "should update base_roster" do
-    patch :update, id: @base_roster, base_roster: { commencement_date: @base_roster.commencement_date, depot: @base_roster.depot, duration: @base_roster.duration, link: @base_roster.link, name: @base_roster.name, number_of_lines: @base_roster.number_of_lines, type: @base_roster.type, version: @base_roster.version }
+    patch :update, id: @base_roster, base_roster: { commencement_date: @base_roster.commencement_date, depot: @base_roster.depot, duration: @base_roster.duration, link: @base_roster.link, name: @base_roster.name,  version: @base_roster.version }
     assert_redirected_to base_roster_path(assigns(:base_roster))
   end
 

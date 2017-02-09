@@ -70,6 +70,7 @@ class LinesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def line_params
-    params.require(:line).permit(:number)
+    params.require(:line).permit(:number,
+    days_attributes: [:line_id, :turn_id, :id])
   end
 end

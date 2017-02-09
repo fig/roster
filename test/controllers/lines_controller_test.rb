@@ -18,6 +18,7 @@ class LinesControllerTest < ActionController::TestCase
 
   test "should create line" do
     assert_difference('Line.count') do
+      @line = Line.new number: "1"
       post :create, line: { number: @line.number }
     end
 
@@ -35,7 +36,7 @@ class LinesControllerTest < ActionController::TestCase
   end
 
   test "should update line" do
-    patch :update, id: @line, line: { number: @line.number }
+    patch :update, id: @line, line: { number: '1' }
     assert_redirected_to line_path(assigns(:line))
   end
 

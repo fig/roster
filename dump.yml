@@ -1,0 +1,761 @@
+---
+- !ruby/object:Turn
+  raw_attributes:
+    id: 1
+    name: '01'
+    time_on: '0515'
+    time_off: '1230'
+    duration: 26100
+    hours: '7:15'
+    start_time: '2016-07-30 04:15:00.000000'
+    finish_time: '2016-07-30 11:30:00.000000'
+    created_at: '2016-07-30 00:03:48.055591'
+    updated_at: '2016-07-30 00:03:48.055591'
+  attributes: !ruby/object:ActiveRecord::AttributeSet
+    attributes: !ruby/object:ActiveRecord::LazyAttributeHash
+      types: &8
+        id: &5 !ruby/object:ActiveRecord::Type::Integer
+          precision: 
+          scale: 
+          limit: 
+          range: !ruby/range
+            begin: -2147483648
+            end: 2147483648
+            excl: true
+        name: &2 !ruby/object:ActiveRecord::Type::String
+          precision: 
+          scale: 
+          limit: 
+        time_on: &1 !ruby/object:ActiveRecord::Type::String
+          precision: 
+          scale: 
+          limit: 4
+        time_off: *1
+        duration: &3 !ruby/object:ActiveRecord::Type::Time
+          precision: 
+          scale: 
+          limit: 
+        hours: *2
+        start_time: *3
+        finish_time: *3
+        created_at: &6 !ruby/object:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter
+          subtype: &4 !ruby/object:ActiveRecord::Type::DateTime
+            precision: 
+            scale: 
+            limit: 
+        updated_at: &7 !ruby/object:ActiveRecord::AttributeMethods::TimeZoneConversion::TimeZoneConverter
+          subtype: *4
+      values:
+        id: 1
+        name: '01'
+        time_on: '0515'
+        time_off: '1230'
+        duration: 26100
+        hours: '7:15'
+        start_time: '2016-07-30 04:15:00.000000'
+        finish_time: '2016-07-30 11:30:00.000000'
+        created_at: '2016-07-30 00:03:48.055591'
+        updated_at: '2016-07-30 00:03:48.055591'
+      additional_types: &9 {}
+      materialized: true
+      delegate_hash:
+        id: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: id
+          value_before_type_cast: 1
+          type: *5
+          value: 1
+        name: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: name
+          value_before_type_cast: '01'
+          type: *2
+          value: '01'
+        time_on: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_on
+          value_before_type_cast: '0515'
+          type: *1
+          value: '0515'
+        time_off: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_off
+          value_before_type_cast: '1230'
+          type: *1
+          value: '1230'
+        duration: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: duration
+          value_before_type_cast: 26100
+          type: *3
+          value: 26100
+        hours: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: hours
+          value_before_type_cast: '7:15'
+          type: *2
+          value: '7:15'
+        start_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: start_time
+          value_before_type_cast: '2016-07-30 04:15:00.000000'
+          type: *3
+          value: 2000-01-01 04:15:00.000000000 Z
+        finish_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: finish_time
+          value_before_type_cast: '2016-07-30 11:30:00.000000'
+          type: *3
+          value: 2000-01-01 11:30:00.000000000 Z
+        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: created_at
+          value_before_type_cast: '2016-07-30 00:03:48.055591'
+          type: *6
+          value: 2016-07-30 00:03:48.055591000 Z
+        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: updated_at
+          value_before_type_cast: '2016-07-30 00:03:48.055591'
+          type: *7
+          value: 2016-07-30 00:03:48.055591000 Z
+  new_record: false
+  active_record_yaml_version: 0
+- !ruby/object:Turn
+  raw_attributes:
+    id: 2
+    name: '02'
+    time_on: '0530'
+    time_off: '1300'
+    duration: 27000
+    hours: '7:30'
+    start_time: '2016-07-30 04:30:00.000000'
+    finish_time: '2016-07-30 12:00:00.000000'
+    created_at: '2016-07-30 00:11:43.204307'
+    updated_at: '2016-07-30 00:11:43.204307'
+  attributes: !ruby/object:ActiveRecord::AttributeSet
+    attributes: !ruby/object:ActiveRecord::LazyAttributeHash
+      types: *8
+      values:
+        id: 2
+        name: '02'
+        time_on: '0530'
+        time_off: '1300'
+        duration: 27000
+        hours: '7:30'
+        start_time: '2016-07-30 04:30:00.000000'
+        finish_time: '2016-07-30 12:00:00.000000'
+        created_at: '2016-07-30 00:11:43.204307'
+        updated_at: '2016-07-30 00:11:43.204307'
+      additional_types: *9
+      materialized: true
+      delegate_hash:
+        id: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: id
+          value_before_type_cast: 2
+          type: *5
+          value: 2
+        name: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: name
+          value_before_type_cast: '02'
+          type: *2
+          value: '02'
+        time_on: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_on
+          value_before_type_cast: '0530'
+          type: *1
+          value: '0530'
+        time_off: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_off
+          value_before_type_cast: '1300'
+          type: *1
+          value: '1300'
+        duration: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: duration
+          value_before_type_cast: 27000
+          type: *3
+          value: 27000
+        hours: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: hours
+          value_before_type_cast: '7:30'
+          type: *2
+          value: '7:30'
+        start_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: start_time
+          value_before_type_cast: '2016-07-30 04:30:00.000000'
+          type: *3
+          value: 2000-01-01 04:30:00.000000000 Z
+        finish_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: finish_time
+          value_before_type_cast: '2016-07-30 12:00:00.000000'
+          type: *3
+          value: 2000-01-01 12:00:00.000000000 Z
+        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: created_at
+          value_before_type_cast: '2016-07-30 00:11:43.204307'
+          type: *6
+          value: 2016-07-30 00:11:43.204307000 Z
+        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: updated_at
+          value_before_type_cast: '2016-07-30 00:11:43.204307'
+          type: *7
+          value: 2016-07-30 00:11:43.204307000 Z
+  new_record: false
+  active_record_yaml_version: 0
+- !ruby/object:Turn
+  raw_attributes:
+    id: 5
+    name: '03'
+    time_on: '0545'
+    time_off: '1415'
+    duration: 30600
+    hours: '8:30'
+    start_time: '2016-07-30 04:45:00.000000'
+    finish_time: '2016-07-30 13:15:00.000000'
+    created_at: '2016-07-30 00:15:41.127939'
+    updated_at: '2016-07-30 00:16:13.976392'
+  attributes: !ruby/object:ActiveRecord::AttributeSet
+    attributes: !ruby/object:ActiveRecord::LazyAttributeHash
+      types: *8
+      values:
+        id: 5
+        name: '03'
+        time_on: '0545'
+        time_off: '1415'
+        duration: 30600
+        hours: '8:30'
+        start_time: '2016-07-30 04:45:00.000000'
+        finish_time: '2016-07-30 13:15:00.000000'
+        created_at: '2016-07-30 00:15:41.127939'
+        updated_at: '2016-07-30 00:16:13.976392'
+      additional_types: *9
+      materialized: true
+      delegate_hash:
+        id: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: id
+          value_before_type_cast: 5
+          type: *5
+          value: 5
+        name: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: name
+          value_before_type_cast: '03'
+          type: *2
+          value: '03'
+        time_on: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_on
+          value_before_type_cast: '0545'
+          type: *1
+          value: '0545'
+        time_off: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_off
+          value_before_type_cast: '1415'
+          type: *1
+          value: '1415'
+        duration: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: duration
+          value_before_type_cast: 30600
+          type: *3
+          value: 30600
+        hours: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: hours
+          value_before_type_cast: '8:30'
+          type: *2
+          value: '8:30'
+        start_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: start_time
+          value_before_type_cast: '2016-07-30 04:45:00.000000'
+          type: *3
+          value: 2000-01-01 04:45:00.000000000 Z
+        finish_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: finish_time
+          value_before_type_cast: '2016-07-30 13:15:00.000000'
+          type: *3
+          value: 2000-01-01 13:15:00.000000000 Z
+        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: created_at
+          value_before_type_cast: '2016-07-30 00:15:41.127939'
+          type: *6
+          value: 2016-07-30 00:15:41.127939000 Z
+        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: updated_at
+          value_before_type_cast: '2016-07-30 00:16:13.976392'
+          type: *7
+          value: 2016-07-30 00:16:13.976392000 Z
+  new_record: false
+  active_record_yaml_version: 0
+- !ruby/object:Turn
+  raw_attributes:
+    id: 6
+    name: '04'
+    time_on: '0600'
+    time_off: '1300'
+    duration: 25200
+    hours: '7:00'
+    start_time: '2016-07-30 05:00:00.000000'
+    finish_time: '2016-07-30 12:00:00.000000'
+    created_at: '2016-07-30 00:25:45.011864'
+    updated_at: '2016-07-30 00:25:45.011864'
+  attributes: !ruby/object:ActiveRecord::AttributeSet
+    attributes: !ruby/object:ActiveRecord::LazyAttributeHash
+      types: *8
+      values:
+        id: 6
+        name: '04'
+        time_on: '0600'
+        time_off: '1300'
+        duration: 25200
+        hours: '7:00'
+        start_time: '2016-07-30 05:00:00.000000'
+        finish_time: '2016-07-30 12:00:00.000000'
+        created_at: '2016-07-30 00:25:45.011864'
+        updated_at: '2016-07-30 00:25:45.011864'
+      additional_types: *9
+      materialized: true
+      delegate_hash:
+        id: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: id
+          value_before_type_cast: 6
+          type: *5
+          value: 6
+        name: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: name
+          value_before_type_cast: '04'
+          type: *2
+          value: '04'
+        time_on: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_on
+          value_before_type_cast: '0600'
+          type: *1
+          value: '0600'
+        time_off: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_off
+          value_before_type_cast: '1300'
+          type: *1
+          value: '1300'
+        duration: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: duration
+          value_before_type_cast: 25200
+          type: *3
+          value: 25200
+        hours: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: hours
+          value_before_type_cast: '7:00'
+          type: *2
+          value: '7:00'
+        start_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: start_time
+          value_before_type_cast: '2016-07-30 05:00:00.000000'
+          type: *3
+          value: 2000-01-01 05:00:00.000000000 Z
+        finish_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: finish_time
+          value_before_type_cast: '2016-07-30 12:00:00.000000'
+          type: *3
+          value: 2000-01-01 12:00:00.000000000 Z
+        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: created_at
+          value_before_type_cast: '2016-07-30 00:25:45.011864'
+          type: *6
+          value: 2016-07-30 00:25:45.011864000 Z
+        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: updated_at
+          value_before_type_cast: '2016-07-30 00:25:45.011864'
+          type: *7
+          value: 2016-07-30 00:25:45.011864000 Z
+  new_record: false
+  active_record_yaml_version: 0
+- !ruby/object:Turn
+  raw_attributes:
+    id: 7
+    name: '05'
+    time_on: '0615'
+    time_off: '1245'
+    duration: 23400
+    hours: '6:30'
+    start_time: '2016-07-31 05:15:00.000000'
+    finish_time: '2016-07-31 11:45:00.000000'
+    created_at: '2016-07-30 23:52:23.229497'
+    updated_at: '2016-07-30 23:52:23.229497'
+  attributes: !ruby/object:ActiveRecord::AttributeSet
+    attributes: !ruby/object:ActiveRecord::LazyAttributeHash
+      types: *8
+      values:
+        id: 7
+        name: '05'
+        time_on: '0615'
+        time_off: '1245'
+        duration: 23400
+        hours: '6:30'
+        start_time: '2016-07-31 05:15:00.000000'
+        finish_time: '2016-07-31 11:45:00.000000'
+        created_at: '2016-07-30 23:52:23.229497'
+        updated_at: '2016-07-30 23:52:23.229497'
+      additional_types: *9
+      materialized: true
+      delegate_hash:
+        id: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: id
+          value_before_type_cast: 7
+          type: *5
+          value: 7
+        name: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: name
+          value_before_type_cast: '05'
+          type: *2
+          value: '05'
+        time_on: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_on
+          value_before_type_cast: '0615'
+          type: *1
+          value: '0615'
+        time_off: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_off
+          value_before_type_cast: '1245'
+          type: *1
+          value: '1245'
+        duration: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: duration
+          value_before_type_cast: 23400
+          type: *3
+          value: 23400
+        hours: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: hours
+          value_before_type_cast: '6:30'
+          type: *2
+          value: '6:30'
+        start_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: start_time
+          value_before_type_cast: '2016-07-31 05:15:00.000000'
+          type: *3
+          value: 2000-01-01 05:15:00.000000000 Z
+        finish_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: finish_time
+          value_before_type_cast: '2016-07-31 11:45:00.000000'
+          type: *3
+          value: 2000-01-01 11:45:00.000000000 Z
+        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: created_at
+          value_before_type_cast: '2016-07-30 23:52:23.229497'
+          type: *6
+          value: 2016-07-30 23:52:23.229497000 Z
+        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: updated_at
+          value_before_type_cast: '2016-07-30 23:52:23.229497'
+          type: *7
+          value: 2016-07-30 23:52:23.229497000 Z
+  new_record: false
+  active_record_yaml_version: 0
+- !ruby/object:Turn
+  raw_attributes:
+    id: 9
+    name: RD
+    time_on: 
+    time_off: 
+    duration: 
+    hours: 
+    start_time: 
+    finish_time: 
+    created_at: '2016-08-02 03:01:45.699513'
+    updated_at: '2016-08-02 03:01:45.699513'
+  attributes: !ruby/object:ActiveRecord::AttributeSet
+    attributes: !ruby/object:ActiveRecord::LazyAttributeHash
+      types: *8
+      values:
+        id: 9
+        name: RD
+        time_on: 
+        time_off: 
+        duration: 
+        hours: 
+        start_time: 
+        finish_time: 
+        created_at: '2016-08-02 03:01:45.699513'
+        updated_at: '2016-08-02 03:01:45.699513'
+      additional_types: *9
+      materialized: true
+      delegate_hash:
+        id: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: id
+          value_before_type_cast: 9
+          type: *5
+          value: 9
+        name: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: name
+          value_before_type_cast: RD
+          type: *2
+          value: RD
+        time_on: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_on
+          value_before_type_cast: 
+          type: *1
+          value: 
+        time_off: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_off
+          value_before_type_cast: 
+          type: *1
+          value: 
+        duration: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: duration
+          value_before_type_cast: 
+          type: *3
+          value: 
+        hours: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: hours
+          value_before_type_cast: 
+          type: *2
+          value: 
+        start_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: start_time
+          value_before_type_cast: 
+          type: *3
+          value: 
+        finish_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: finish_time
+          value_before_type_cast: 
+          type: *3
+          value: 
+        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: created_at
+          value_before_type_cast: '2016-08-02 03:01:45.699513'
+          type: *6
+          value: 2016-08-02 03:01:45.699513000 Z
+        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: updated_at
+          value_before_type_cast: '2016-08-02 03:01:45.699513'
+          type: *7
+          value: 2016-08-02 03:01:45.699513000 Z
+  new_record: false
+  active_record_yaml_version: 0
+- !ruby/object:Turn
+  raw_attributes:
+    id: 10
+    name: '06'
+    time_on: '0715'
+    time_off: '1355'
+    duration: 24000
+    hours: '6:40'
+    start_time: 
+    finish_time: 
+    created_at: '2016-08-05 13:28:34.817566'
+    updated_at: '2016-08-05 13:28:51.434641'
+  attributes: !ruby/object:ActiveRecord::AttributeSet
+    attributes: !ruby/object:ActiveRecord::LazyAttributeHash
+      types: *8
+      values:
+        id: 10
+        name: '06'
+        time_on: '0715'
+        time_off: '1355'
+        duration: 24000
+        hours: '6:40'
+        start_time: 
+        finish_time: 
+        created_at: '2016-08-05 13:28:34.817566'
+        updated_at: '2016-08-05 13:28:51.434641'
+      additional_types: *9
+      materialized: true
+      delegate_hash:
+        id: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: id
+          value_before_type_cast: 10
+          type: *5
+          value: 10
+        name: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: name
+          value_before_type_cast: '06'
+          type: *2
+          value: '06'
+        time_on: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_on
+          value_before_type_cast: '0715'
+          type: *1
+          value: '0715'
+        time_off: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_off
+          value_before_type_cast: '1355'
+          type: *1
+          value: '1355'
+        duration: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: duration
+          value_before_type_cast: 24000
+          type: *3
+          value: 24000
+        hours: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: hours
+          value_before_type_cast: '6:40'
+          type: *2
+          value: '6:40'
+        start_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: start_time
+          value_before_type_cast: 
+          type: *3
+          value: 
+        finish_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: finish_time
+          value_before_type_cast: 
+          type: *3
+          value: 
+        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: created_at
+          value_before_type_cast: '2016-08-05 13:28:34.817566'
+          type: *6
+          value: 2016-08-05 13:28:34.817566000 Z
+        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: updated_at
+          value_before_type_cast: '2016-08-05 13:28:51.434641'
+          type: *7
+          value: 2016-08-05 13:28:51.434641000 Z
+  new_record: false
+  active_record_yaml_version: 0
+- !ruby/object:Turn
+  raw_attributes:
+    id: 11
+    name: 'OFF'
+    time_on: 
+    time_off: 
+    duration: 
+    hours: 
+    start_time: 
+    finish_time: 
+    created_at: '2016-08-19 18:41:46.014526'
+    updated_at: '2016-08-19 18:41:46.014526'
+  attributes: !ruby/object:ActiveRecord::AttributeSet
+    attributes: !ruby/object:ActiveRecord::LazyAttributeHash
+      types: *8
+      values:
+        id: 11
+        name: 'OFF'
+        time_on: 
+        time_off: 
+        duration: 
+        hours: 
+        start_time: 
+        finish_time: 
+        created_at: '2016-08-19 18:41:46.014526'
+        updated_at: '2016-08-19 18:41:46.014526'
+      additional_types: *9
+      materialized: true
+      delegate_hash:
+        id: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: id
+          value_before_type_cast: 11
+          type: *5
+          value: 11
+        name: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: name
+          value_before_type_cast: 'OFF'
+          type: *2
+          value: 'OFF'
+        time_on: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_on
+          value_before_type_cast: 
+          type: *1
+          value: 
+        time_off: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_off
+          value_before_type_cast: 
+          type: *1
+          value: 
+        duration: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: duration
+          value_before_type_cast: 
+          type: *3
+          value: 
+        hours: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: hours
+          value_before_type_cast: 
+          type: *2
+          value: 
+        start_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: start_time
+          value_before_type_cast: 
+          type: *3
+          value: 
+        finish_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: finish_time
+          value_before_type_cast: 
+          type: *3
+          value: 
+        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: created_at
+          value_before_type_cast: '2016-08-19 18:41:46.014526'
+          type: *6
+          value: 2016-08-19 18:41:46.014526000 Z
+        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: updated_at
+          value_before_type_cast: '2016-08-19 18:41:46.014526'
+          type: *7
+          value: 2016-08-19 18:41:46.014526000 Z
+  new_record: false
+  active_record_yaml_version: 0
+- !ruby/object:Turn
+  raw_attributes:
+    id: 12
+    name: '81'
+    time_on: '0515'
+    time_off: '1515'
+    duration: 36000
+    hours: '10:00'
+    start_time: 
+    finish_time: 
+    created_at: '2017-01-22 01:14:02.889518'
+    updated_at: '2017-01-22 01:14:02.889518'
+  attributes: !ruby/object:ActiveRecord::AttributeSet
+    attributes: !ruby/object:ActiveRecord::LazyAttributeHash
+      types: *8
+      values:
+        id: 12
+        name: '81'
+        time_on: '0515'
+        time_off: '1515'
+        duration: 36000
+        hours: '10:00'
+        start_time: 
+        finish_time: 
+        created_at: '2017-01-22 01:14:02.889518'
+        updated_at: '2017-01-22 01:14:02.889518'
+      additional_types: *9
+      materialized: true
+      delegate_hash:
+        id: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: id
+          value_before_type_cast: 12
+          type: *5
+          value: 12
+        name: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: name
+          value_before_type_cast: '81'
+          type: *2
+          value: '81'
+        time_on: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_on
+          value_before_type_cast: '0515'
+          type: *1
+          value: '0515'
+        time_off: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: time_off
+          value_before_type_cast: '1515'
+          type: *1
+          value: '1515'
+        duration: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: duration
+          value_before_type_cast: 36000
+          type: *3
+          value: 36000
+        hours: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: hours
+          value_before_type_cast: '10:00'
+          type: *2
+          value: '10:00'
+        start_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: start_time
+          value_before_type_cast: 
+          type: *3
+          value: 
+        finish_time: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: finish_time
+          value_before_type_cast: 
+          type: *3
+          value: 
+        created_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: created_at
+          value_before_type_cast: '2017-01-22 01:14:02.889518'
+          type: *6
+          value: 2017-01-22 01:14:02.889518000 Z
+        updated_at: !ruby/object:ActiveRecord::Attribute::FromDatabase
+          name: updated_at
+          value_before_type_cast: '2017-01-22 01:14:02.889518'
+          type: *7
+          value: 2017-01-22 01:14:02.889518000 Z
+  new_record: false
+  active_record_yaml_version: 0

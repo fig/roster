@@ -62,13 +62,15 @@ class BaseRostersController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
+
     def set_base_roster
       @base_roster = BaseRoster.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def base_roster_params
-      params.require(:base_roster).permit(:name, :version, :depot, :link, :duration, :type, :commencement_date, :number_of_lines)
+      params.require(:base_roster).permit(:name, :version, :depot, :link, :duration, :commencement_date, :number_of_lines)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801100741) do
+ActiveRecord::Schema.define(version: 20170209005616) do
 
   create_table "base_rosters", force: :cascade do |t|
     t.string   "name"
@@ -19,28 +19,37 @@ ActiveRecord::Schema.define(version: 20160801100741) do
     t.string   "depot"
     t.string   "link"
     t.integer  "duration"
-    t.string   "type"
     t.date     "commencement_date"
-    t.integer  "number_of_lines"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
+
+  create_table "days", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "line_id"
+    t.integer  "turn_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "days", ["line_id"], name: "index_days_on_line_id"
+  add_index "days", ["turn_id"], name: "index_days_on_turn_id"
 
   create_table "lines", force: :cascade do |t|
     t.string   "number"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "base_roster_id"
+    t.string   "sun"
+    t.string   "mon"
+    t.string   "tue"
+    t.string   "wed"
+    t.string   "thu"
+    t.string   "fri"
+    t.string   "sat"
   end
 
   add_index "lines", ["base_roster_id"], name: "index_lines_on_base_roster_id"
-
-  create_table "lines_turns", id: false, force: :cascade do |t|
-    t.integer "line_id"
-    t.integer "turn_id"
-  end
-
-  add_index "lines_turns", ["line_id", "turn_id"], name: "index_lines_turns_on_line_id_and_turn_id"
 
   create_table "turns", force: :cascade do |t|
     t.string   "name"

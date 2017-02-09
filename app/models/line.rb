@@ -1,5 +1,13 @@
 class Line < ActiveRecord::Base
-  has_and_belongs_to_many(:turns)
-  belongs_to(:base_roster)
+  belongs_to :base_roster
+
   validates :number, presence: true
+
+  before_save :strip_leading_zeros
+
+  private
+
+  def strip_leading_zeros
+    number.sub!(/^0+/,"")
+  end
 end

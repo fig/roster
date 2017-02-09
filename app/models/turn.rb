@@ -1,5 +1,4 @@
 class Turn < ActiveRecord::Base
-  has_and_belongs_to_many(:lines)
 
   require 'time'
 
@@ -23,12 +22,10 @@ class Turn < ActiveRecord::Base
   def pad_with_zero
     self.time_on = time_on.rjust(4, '0') if time_on.size == 3
     self.time_off = time_off.rjust(4, '0') if time_off.size == 3
-    # [self.time_on, self.time_off].each { |t| t = t.rjust(4, '0') }
   end
 
   def day_off?
     name.upcase!
-    # ['RD', 'OFF', /.*EX.*/].include? name
     name == 'RD' || name == 'OFF' || name.include?('EX')
   end
 

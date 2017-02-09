@@ -1,23 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<table>
-  <tr>
-    <th>Line</th>
-    <th>Sun</th>
-    <th>Mon</th>
-    <th>Tue</th>
-    <th>Wed</th>
-    <th>Thur</th>
-    <th>Fri</th>
-    <th>Sat</th>
-  </tr>
-  <tr>
-    <td><%= @line.number %></td>
-    <% @line.turns.each do |t| %>
-    <td><%= t.name %></td>
-  <% end %>
-  </tr>
-</table>
+
 
 <%= link_to 'Edit', edit_line_path(@line) %> |
 <%= link_to 'Back', lines_path %>
