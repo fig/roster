@@ -20,12 +20,15 @@ gem 'net-ssh'
 gem 'spring', '1.1.3'
 gem 'sdoc', '0.4.0', group: :doc
 gem 'rails-erd'
+gem 'simple_form', '~> 3.4'
 group :development, :test do
+  gem 'pry-byebug'
   gem 'web-console'
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'sqlite3', '1.3.9'
   gem 'guard'
   gem 'awesome_print', :require => 'ap'
+  gem 'factory_girl_rails', '~> 4.8'
 end
 group :test do
   gem 'minitest-reporters', '~> 1.1.0'

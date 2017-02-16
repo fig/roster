@@ -2,23 +2,21 @@ require 'test_helper'
 
 class TurnTest < ActiveSupport::TestCase
   def setup
-    @turn = Turn.new name: '01', time_on: '1200', time_off: '1300'
+    @turn = FactoryGirl.build :turn
   end
 
   test 'should pad with leading zero' do
-    @turn.time_on = '500'
-    @turn.valid?
-    assert_equal '0500', @turn.time_on
+    @turn.time_on = '100'
+    @turn.save
+    assert_equal '0100', @turn.time_on
   end
 
   test 'should strip non-digits from times' do
-    @turn.time_on = '09:00'
-    @turn.valid?
-    assert_equal '0900', @turn.time_on
-  end
-
-  test 'should be valid' do
-    assert @turn.valid?
+    ['09:00', '9 00', '9.00am'].each do |time|
+      @turn.time_on = time
+      @turn.save
+      assert_equal '0900', @turn.time_on
+    end
   end
 
   test 'name should be present' do
@@ -33,16 +31,59 @@ class TurnTest < ActiveSupport::TestCase
   end
 
   test "days off don't need times" do
-    @turn.time_on = @turn.time_off = ''
     %w(RD off EX1).each do |name|
-      @turn.name = name
-      assert @turn.valid?
+      turn = build :turn, name: name, time_on: '', time_off: ''
+      assert turn.valid?
     end
   end
 
-  test 'turn duration should correct and formatted' do
+  test 'turn duration should be correct and formatted' do
     @turn.save
     assert_equal 3600, @turn.duration
     assert_equal '1:00', @turn.hours
+  end
+
+  test 'create SX days' do
+    assert_equal 'SX', @turn.days_code
+  end
+
+  test 'create FSX days' do
+    @turn.fri = false
+    assert_equal 'FSX', @turn.days_code
+  end
+
+  test 'turns clashing' do
+    turn1 = Turn.new name: '1', mon: true
+    turn2 = Turn.new name: '1', mon: true
+    assert turn1.clash?(turn2)
+  end
+
+  test 'turns not clashing' do
+    turn1 = Turn.new name: '1', mon: true
+    turn2 = Turn.new name: '1', sun: true
+    refute turn1.clash?(turn2)
+  end
+
+  test 'uniqueness of name unless on different days' do
+    @turn.save
+    turn = Turn.new name: '1',
+                    time_on: '0900',
+                    time_off: '1200',
+                    mon: true
+    assert_not turn.valid?, 'Allowed duplicate Turn on same day'
+    turn = Turn.new name: '1',
+                    time_on: '0900',
+                    time_off: '1200',
+                    sun: true
+    assert turn.valid?, "Didn't allow same turn on different day"
+  end
+
+  test 'allow multiple Spare Turns' do
+    create :turn, name: 'A/R',
+                  mon: true
+    turn = build :turn,
+                 name: 'A/R',
+                 mon: true
+    assert turn.valid?, "Didn't allow duplicate Spare turn"
   end
 end

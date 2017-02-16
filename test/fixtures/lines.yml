@@ -9,7 +9,7 @@ one:
   thu: ""
   fri: ""
   sat: ""
-  base_roster_id: 1
+  base_roster: one
 
 two:
   number: "2"
@@ -20,4 +20,4 @@ two:
   thu: ""
   fri: ""
   sat: ""
-  base_roster_id: 1
+  base_roster: one

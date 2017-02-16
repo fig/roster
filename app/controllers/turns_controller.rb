@@ -14,8 +14,8 @@ class TurnsController < ApplicationController
 
   # GET /turns/new
   def new
-    @turn = Turn.new
-    @turns = Turn.all.order updated_at: :desc
+    @turn = Turn.new sat: true
+    @turns = Turn.all.order created_at: :desc
   end
 
   # GET /turns/1/edit
@@ -62,7 +62,7 @@ class TurnsController < ApplicationController
     end
   end
 
-  private
+  #private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_turn
@@ -71,6 +71,15 @@ class TurnsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def turn_params
-    params.require(:turn).permit(:name, :time_on, :time_off)
+    params.require(:turn).permit(:name,
+                                 :time_on,
+                                 :time_off,
+                                 :sun,
+                                 :mon,
+                                 :tue,
+                                 :wed,
+                                 :thu,
+                                 :fri,
+                                 :sat)
   end
 end

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LinesControllerTest < ActionController::TestCase
   setup do
-    @line = lines(:one)
+    @line = create :line
   end
 
   test "should get index" do

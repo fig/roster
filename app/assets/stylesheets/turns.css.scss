@@ -1,3 +1,31 @@
 // Place all the styles related to the turns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+label {
+  display: block;
+}
+
+.checkbox label {
+  font-weight: bold;
+}
+
+input.boolean {
+  position: relative;
+  top: 45px;
+}
+
+.checkbox {
+  display: table-caption !important;
+  top: -27px;
+}
+
+.btn {
+  vertical-align: bottom;
+}
+
+p.form-control-static{
+    font-size: x-large;
+    vertical-align: bottom;
+    padding-right: 1em;
+}

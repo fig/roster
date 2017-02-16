@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209005616) do
+ActiveRecord::Schema.define(version: 20170212030359) do
 
   create_table "base_rosters", force: :cascade do |t|
     t.string   "name"
@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 20170209005616) do
     t.time     "finish_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.boolean  "sun"
+    t.boolean  "mon"
+    t.boolean  "tue"
+    t.boolean  "wed"
+    t.boolean  "thu"
+    t.boolean  "fri"
+    t.boolean  "sat"
+    t.string   "days"
   end
 
 end

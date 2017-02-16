@@ -2,7 +2,7 @@ require 'test_helper'
 
 class BaseRostersControllerTest < ActionController::TestCase
   setup do
-    @base_roster = base_rosters(:one)
+    @base_roster = create :base_roster
   end
 
   test "should get index" do
@@ -22,11 +22,13 @@ class BaseRostersControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to base_roster_path(assigns(:base_roster))
+    assert assigns(:line), "didn't create first line."
   end
 
   test "should show base_roster" do
     get :show, id: @base_roster
     assert_response :success
+    assert assigns(:base_roster)
   end
 
   test "should get edit" do

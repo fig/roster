@@ -28,6 +28,7 @@ class BaseRostersController < ApplicationController
 
     respond_to do |format|
       if @base_roster.save
+        @line = @base_roster.lines.build(number: '1')
         format.html { redirect_to @base_roster, notice: 'Base roster was successfully created.' }
         format.json { render :show, status: :created, location: @base_roster }
       else
@@ -71,6 +72,6 @@ class BaseRostersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def base_roster_params
-      params.require(:base_roster).permit(:name, :version, :depot, :link, :duration, :commencement_date, :number_of_lines)
+      params.require(:base_roster).permit(:name, :version, :depot, :link, :duration, :commencement_date)
     end
 end
