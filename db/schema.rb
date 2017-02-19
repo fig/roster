@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212030359) do
+ActiveRecord::Schema.define(version: 20170218005613) do
 
   create_table "base_rosters", force: :cascade do |t|
     t.string   "name"
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 20170212030359) do
 
   create_table "turns", force: :cascade do |t|
     t.string   "name"
-    t.string   "time_on",     limit: 4
-    t.string   "time_off",    limit: 4
+    t.string   "time_on",     limit: 4, default: ""
+    t.string   "time_off",    limit: 4, default: ""
     t.time     "duration"
     t.string   "hours"
     t.time     "start_time"

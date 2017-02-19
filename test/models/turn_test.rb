@@ -5,6 +5,19 @@ class TurnTest < ActiveSupport::TestCase
     @turn = FactoryGirl.build :turn
   end
 
+  test 'valid turn' do
+    turn = Turn.new(name: '1')
+    assert turn.valid? 'Valid turn failed validation'
+  end
+
+  test 'invalid without name' do
+    turn = Turn.new
+    refute turn.valid?, 'turn is valid without a name'
+    assert_not_nil turn.errors[:name], 'no validation error for name present'
+  end
+
+##########################################################
+
   test 'should pad with leading zero' do
     @turn.time_on = '100'
     @turn.save
@@ -52,16 +65,10 @@ class TurnTest < ActiveSupport::TestCase
     assert_equal 'FSX', @turn.days_code
   end
 
-  test 'turns clashing' do
-    turn1 = Turn.new name: '1', mon: true
-    turn2 = Turn.new name: '1', mon: true
-    assert turn1.clash?(turn2)
-  end
-
   test 'turns not clashing' do
     turn1 = Turn.new name: '1', mon: true
-    turn2 = Turn.new name: '1', sun: true
-    refute turn1.clash?(turn2)
+    turn2 = Turn.create name: '1', sun: true
+    assert turn2.valid? 'Valid turn failed validation'
   end
 
   test 'uniqueness of name unless on different days' do
