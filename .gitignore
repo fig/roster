@@ -12,9 +12,12 @@
 /db/*.sqlite3-journal
 
 # Ignore all documentation, logfiles and tempfiles.
-/doc/app
+/doc
 /log/*.log
 /tmp
+
+# Ignore Yard config
+.yardoc/
 
 # Created by https://www.gitignore.io/api/rubymine,cloud9,sublimetext,windows,linux
 

@@ -18,7 +18,6 @@ gem 'turbolinks', '2.3.0'
 gem 'jbuilder', '2.2.3'
 gem 'net-ssh'
 gem 'spring', '1.1.3'
-gem 'sdoc', '0.4.0', group: :doc
 gem 'rails-erd'
 gem 'simple_form', '~> 3.4'
 group :development, :test do
