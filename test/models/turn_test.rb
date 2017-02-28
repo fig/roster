@@ -4,24 +4,24 @@ class TurnTest < ActiveSupport::TestCase
   def setup
     @turn = FactoryGirl.build :turn
   end
-  
+
   test 'running turn is valid' do
     assert @turn.valid?, 'Valid turn failed validation'
   end
-  
+
   test 'spare turn is valid' do
     @turn.name = 'a/r'
     assert @turn.valid?, 'Spare turn failed validation'
   end
-  
+
   test 'day off is valid' do
     @turn.time_on, @turn.time_off = ''
-    ['off', 'rd', 'ex1'].each do |name|
+    %w(off rd ex1).each do |name|
       @turn.name = name
       assert @turn.valid?, 'Day off failed validation'
       @turn.save
-      assert @turn.time_on == nil, 'Failed to strip time_on from day off'
-      assert @turn.time_off == nil, 'Failed to strip time_off from day off'
+      assert @turn.time_on.nil?, 'Failed to strip time_on from day off'
+      assert @turn.time_off.nil?, 'Failed to strip time_off from day off'
     end
   end
 
@@ -29,7 +29,7 @@ class TurnTest < ActiveSupport::TestCase
     @turn.name = ''
     refute @turn.valid?, 'Turn is valid without a name'
   end
-  
+
   test 'running turn invalid without times' do
     @turn.time_on = ''
     @turn.time_off = nil
