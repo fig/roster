@@ -25,16 +25,26 @@ class LineTest < ActiveSupport::TestCase
   end
 
   test 'should strip leading zero before validation' do
-    %w(01 001).each do |number|
-      @line.number = number
+    { '01': '1', '001': '1', '10': '10' }.each do |key, value|
+      @line.number = key
       @line.valid?
-      assert_equal '1', @line.number, 'Validated line without stripping zero'
+      assert_equal value, @line.number, 'Validated line without stripping zero'
     end
   end
 
-  # test 'should not save duplicate line number' do
-  #   @line.save
-  #   line2 = build :line
-  #   assert_not line2.valid?
-  # end
+  test 'number should be numeric' do
+    @line.number = 'fred'
+    refute @line.valid?
+  end
+
+  test 'should return an array' do
+    assert_equal([{ sun: "201" },
+                  { mon: "01" },
+                  { tue: "41" },
+                  { wed: "RD" },
+                  { thu: "RD" },
+                  { fri: "A/R" },
+                  { sat: "101" }],
+                  @line.to_a)
+  end
 end

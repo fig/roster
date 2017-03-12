@@ -3,15 +3,14 @@ class Turn < ActiveRecord::Base
   include ActiveModel::Validations
 
   DAY_CODES = {
-               64 => 'Su',
-               62 => 'SX',
-               60 => 'FSX',
-                2 => 'FO',
-                1 => 'SO'
-              }
+    64 => 'Su',
+    62 => 'SX',
+    60 => 'FSX',
+    2 => 'FO',
+    1 => 'SO'
+  }
 
   before_validation :upcase!
-
   validates :name, presence: true
   validates :time_on, presence: true, unless: :day_off?
   validates :time_off, presence: true, unless: :day_off?
@@ -24,12 +23,12 @@ class Turn < ActiveRecord::Base
   ##
   # Returns a string representing the operating days of +Turn+.
   #
-  # M  - Monday  
-  # T  - Tuesday  
-  # W  - Wednesday  
-  # Th - Thursday  
-  # F  - Friday  
-  # S  - Saturday   
+  # M  - Monday
+  # T  - Tuesday
+  # W  - Wednesday
+  # Th - Thursday
+  # F  - Friday
+  # S  - Saturday
   #
   # * Adding ‘O’ to the abbreviation for the day or days
   #   (eg WO) means the train runs only on the day or
@@ -50,13 +49,13 @@ class Turn < ActiveRecord::Base
   #                  sat: false
   #
   #  turn.days_code # => 'SX'
-  
+
   def days_code
     DAY_CODES[binarize_days]
   end
 
 protected
-  
+
   ##
   # Returns a decimal +Integer+ representing the 7-bit binary representation of
   # +Turn+ operating days. Return value is used by +#days_code+ to look-up code
@@ -71,7 +70,7 @@ protected
   #
   #  turn.binarize_days # => 62
   #  # Decimal representation of '0111110'
-  
+
   def binarize_days
     [sun, mon, tue, wed, thu, fri, sat].map { |d| d ? '1' : '0' }.join.to_i(2)
   end

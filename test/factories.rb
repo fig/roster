@@ -14,13 +14,13 @@ FactoryGirl.define do
 
   factory :line do
     number "1"
-    sun ""
-    mon ""
-    tue ""
-    wed ""
-    thu ""
-    fri ""
-    sat ""
+    sun "201"
+    mon "01"
+    tue "41"
+    wed "RD"
+    thu "RD"
+    fri "A/R"
+    sat "101"
     base_roster
   end
 
