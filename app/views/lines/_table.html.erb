@@ -1,0 +1,27 @@
+<table id="lines_table" class="table table-condensed table-striped">
+  <tr>
+    <th>Number</th>
+    <th>Sun</th>
+    <th>Mon</th>
+    <th>Tue</th>
+    <th>Wed</th>
+    <th>Thu</th>
+    <th>Fri</th>
+    <th>Sat</th>
+  </tr>
+
+  <% if @lines %>
+    <% @lines.each do |line| %>
+      <tr>
+        <td><%= line.number %></td>
+        <td><%= line.sun %></td>
+        <td><%= line.mon %></td>
+        <td><%= line.tue %></td>
+        <td><%= line.wed %></td>
+        <td><%= line.thu %></td>
+        <td><%= line.fri %></td>
+        <td><%= line.sat %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

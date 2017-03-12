@@ -1,0 +1,43 @@
+<table class="roster base_roster">
+  <thead>
+    <tr>
+      <th rowspan="2">Block<br>Hours</th>
+      <th rowspan="2">Row<br>No.</th>
+      <th rowspan="2">Weekly<br>Hours</th>
+      <th colspan="4">SUNDAY</th>
+      <th colspan="4">MONDAY</th>
+      <th colspan="4">TUESDAY</th>
+      <th colspan="4">WEDNESDAY</th>
+      <th colspan="4">THURDAY</th>
+      <th colspan="4">FRIDAY</th>
+      <th colspan="4">SATURDAY</th>
+    </tr>
+    <tr>
+      <% 7.times do %>
+      <th>On</th>
+      <th>Off</th>
+      <th>Turn</th>
+      <th>Total</th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @base_roster.lines.each do |line| %>
+      <tr>
+        <td></td>
+        <td><%= line.number %></td>
+        <td><%=  %></td>
+        <% line.to_a.each do |day| %>
+          <% turn = Turn.find_by(name: day.values.first, day.keys.first => true) %>
+          <td><%= turn.time_on%></td>
+          <td><%= turn.time_off%></td>
+          <td><%= turn.name %></td>
+          <td><%= turn.hours%></td>
+        <% end %>
+        <td><%= link_to 'edit', edit_line_path(line) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
