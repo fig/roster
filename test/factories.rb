@@ -10,6 +10,7 @@ FactoryGirl.define do
     thu true
     fri true
     sat false
+    duration 3000
   end
 
   factory :line do
