@@ -22,7 +22,7 @@ class LinesControllerTest < ActionController::TestCase
       post :create, line: { number: @line.number }
     end
 
-    assert_redirected_to line_path(assigns(:line))
+    assert_redirected_to base_roster_path(assigns(:line))
   end
 
   test "should show line" do

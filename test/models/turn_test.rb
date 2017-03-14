@@ -1,3 +1,29 @@
+# == Schema Information
+#
+# Table name: turns
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  time_on     :string(4)        default("")
+#  time_off    :string(4)        default("")
+#  duration    :time
+#  hours       :string
+#  start_time  :time
+#  finish_time :time
+#  created_at  :datetime
+#  updated_at  :datetime
+#  start_date  :date
+#  end_date    :date
+#  sun         :boolean
+#  mon         :boolean
+#  tue         :boolean
+#  wed         :boolean
+#  thu         :boolean
+#  fri         :boolean
+#  sat         :boolean
+#  days        :string
+#
+
 require 'test_helper'
 
 class TurnTest < ActiveSupport::TestCase

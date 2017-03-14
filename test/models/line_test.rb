@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: lines
+#
+#  id             :integer          not null, primary key
+#  number         :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  base_roster_id :integer
+#  sun            :string
+#  mon            :string
+#  tue            :string
+#  wed            :string
+#  thu            :string
+#  fri            :string
+#  sat            :string
+#
+
 require 'test_helper'
 
 class LineTest < ActiveSupport::TestCase
