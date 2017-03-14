@@ -27,7 +27,7 @@
       <tr>
         <td></td>
         <td><%= line.number %></td>
-        <td><%=  %></td>
+        <td><%= line.total_hours %></td>
         <% line.to_a.each do |day| %>
           <% turn = Turn.find_by(name: day.values.first, day.keys.first => true) %>
           <td><%= turn.time_on if turn %></td>

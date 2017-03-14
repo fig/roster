@@ -18,6 +18,17 @@ class Line < ActiveRecord::Base
     ]
   end
 
+  def total_hours
+    total = 0
+    self.to_a.each do |day|
+      turn = Turn.find_by(name: day.values.first, day.keys.first => true)
+      total += turn.duration if turn && turn.duration && !turn.sun
+    end
+    hh, ss = total.divmod(3600)
+    mm = ss / 60
+    format('%d:%02d', hh, mm)
+  end
+
   private
 
   def strip_leading_zeros

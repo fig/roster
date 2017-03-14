@@ -47,4 +47,15 @@ class LineTest < ActiveSupport::TestCase
                   { sat: "101" }],
                   @line.to_a)
   end
+
+  test 'should calculate weekly hours' do
+    line = create :line, sun: false,
+                         mon: '1',
+                         tue: '1',
+                         wed: '1',
+                         thu: '1',
+                         fri: '1',
+                         sat: false
+    assert_equal('5.00', line.total_hours)
+  end
 end
