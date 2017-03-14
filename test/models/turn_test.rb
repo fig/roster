@@ -9,11 +9,6 @@ class TurnTest < ActiveSupport::TestCase
     assert turn.mon
   end
 
-  test 'spare turn is valid' do
-    turn = build :turn, name: 'a/r'
-    assert turn.valid?, 'Spare turn failed validation'
-  end
-
   test 'day off is valid' do
     turn = build :turn, time_on: '', time_off: ''
     %w(off rd ex1).each do |name|
@@ -70,10 +65,21 @@ class TurnTest < ActiveSupport::TestCase
     another_turn.mon = true
     refute another_turn.valid?, 'Allowed duplicate Turn on same day'
   end
+  
+  test 'spare turn should rename itself' do
+    spare_turn = create :turn, name: 's', time_on: '0700', time_off: '1500'
+    assert_equal 'S07001500', spare_turn.name
+    assert_equal 'A/R', spare_turn.display_name
+  end
+  
+  test 'running turn shoud not rename' do
+    turn = create :turn
+    assert_equal '1', turn.display_name
+  end
 
   test 'allow multiple Spare Turns' do
-    create :turn, name: 'A/R', mon: true
-    another_turn = build :turn, name: 'A/R', mon: true
+    create :turn, name: 'S', mon: true
+    another_turn = build :turn, name: 'S', mon: true
     assert another_turn.valid?, "Didn't allow duplicate Spare turn"
   end
 end

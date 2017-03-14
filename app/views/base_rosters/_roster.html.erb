@@ -30,10 +30,10 @@
         <td><%=  %></td>
         <% line.to_a.each do |day| %>
           <% turn = Turn.find_by(name: day.values.first, day.keys.first => true) %>
-          <td><%= turn.time_on%></td>
-          <td><%= turn.time_off%></td>
-          <td><%= turn.name %></td>
-          <td><%= turn.hours%></td>
+          <td><%= turn.time_on if turn %></td>
+          <td><%= turn.time_off if turn %></td>
+          <td><%= turn.display_name if turn %></td>
+          <td><%= turn.hours if turn %></td>
         <% end %>
         <td><%= link_to 'edit', edit_line_path(line) %></td>
       </tr>

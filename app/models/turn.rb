@@ -10,7 +10,7 @@ class Turn < ActiveRecord::Base
     1 => 'SO'
   }
 
-  before_validation :upcase!
+  before_validation :upcase_name!
   validates :name, presence: true
   validates :time_on, presence: true, unless: :day_off?
   validates :time_off, presence: true, unless: :day_off?
@@ -19,6 +19,7 @@ class Turn < ActiveRecord::Base
               :pad_with_zero,
               unless: :day_off?
   before_save :format_times
+  before_save :rename_spare_turn, if: :spare?
 
   ##
   # Returns a string representing the operating days of +Turn+.
@@ -52,6 +53,10 @@ class Turn < ActiveRecord::Base
 
   def days_code
     DAY_CODES[binarize_days]
+  end
+  
+  def display_name
+    spare? ? 'A/R' : name
   end
 
 protected
@@ -92,7 +97,7 @@ private
     [time_on, time_off].each { |t| t.gsub!(/\D/, '') }
   end
 
-  def upcase!
+  def upcase_name!
     name.upcase! if name
   end
 
@@ -108,18 +113,20 @@ private
   end
 
   def spare?
-    name == 'A/R'
+    name.match(/^S|A\/R/)
+  end
+  
+  def rename_spare_turn
+    self.name = "S#{time_on}#{time_off}"
   end
 
   def format_times
     if day_off?
       self.time_on = self.time_off = nil
-      return true
+    else
+      self.duration = diff(timify(time_on), timify(time_off))
+      self.hours = duration_in_words(duration)
     end
-    # self.start_time = timify(time_on)
-    # self.finish_time = timify(time_off)
-    self.duration = diff(timify(time_on), timify(time_off))
-    self.hours = duration_in_words(duration)
   end
 
   def diff(on, off)
