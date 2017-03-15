@@ -14,7 +14,7 @@ class LinesController < ApplicationController
 
   # GET /lines/new
   def new
-    @line = Line.new
+    @line = Line.new(base_roster_id: params[:base_roster])
   end
 
   # GET /lines/1/edit
@@ -28,7 +28,7 @@ class LinesController < ApplicationController
 
     respond_to do |format|
       if @line.save
-        format.html { redirect_to @line, notice: 'Line was successfully created.' }
+        format.html { redirect_to base_roster_path(@line.base_roster_id) }
         format.json { render :show, status: :created, location: @line }
       else
         format.html { render :new }
@@ -71,6 +71,13 @@ class LinesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def line_params
     params.require(:line).permit(:number,
-    days_attributes: [:line_id, :turn_id, :id])
+                                 :sun,
+                                 :mon,
+                                 :tue,
+                                 :wed,
+                                 :thu,
+                                 :fri,
+                                 :sat,
+                                 :base_roster_id)
   end
 end

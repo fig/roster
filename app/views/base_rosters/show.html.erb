@@ -33,61 +33,7 @@
 <%= link_to 'Edit', edit_base_roster_path(@base_roster) %> |
 <%= link_to 'Back', base_rosters_path %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Block<br>Hours</th>
-      <th>Row<br>No.</th>
-      <th>Weekly<br>Hours</th>
-      <th colspan="4">SUNDAY</th>
-      <th colspan="4">MONDAY</th>
-      <th colspan="4">TUESDAY</th>
-      <th colspan="4">WEDNESDAY</th>
-      <th colspan="4">THURDAY</th>
-      <th colspan="4">FRIDAY</th>
-      <th colspan="4">SATURDAY</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @base_roster.lines.each do |line| %>
-      <tr>
-        <td></td>
-        <td><%= line.number %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%= link_to 'edit', edit_line_path(line) %></td>
-
-
-      </tr>
-
-    <% end %>
-  </tbody>
-</table>
+<%= render "roster" %>
+<p>
+<%= link_to "Add Line", new_line_path(base_roster: @base_roster.id), class: "btn btn-default" %>
+</p>

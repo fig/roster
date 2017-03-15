@@ -1,17 +1,42 @@
+# == Schema Information
+#
+# Table name: turns
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  time_on     :string(4)        default("")
+#  time_off    :string(4)        default("")
+#  duration    :time
+#  hours       :string
+#  start_time  :time
+#  finish_time :time
+#  created_at  :datetime
+#  updated_at  :datetime
+#  start_date  :date
+#  end_date    :date
+#  sun         :boolean
+#  mon         :boolean
+#  tue         :boolean
+#  wed         :boolean
+#  thu         :boolean
+#  fri         :boolean
+#  sat         :boolean
+#  days        :string
+#
+
 class Turn < ActiveRecord::Base
   require 'time'
   include ActiveModel::Validations
 
   DAY_CODES = {
-               64 => 'Su',
-               62 => 'SX',
-               60 => 'FSX',
-                2 => 'FO',
-                1 => 'SO'
-              }
+    64 => 'Su',
+    62 => 'SX',
+    60 => 'FSX',
+    2 => 'FO',
+    1 => 'SO'
+  }
 
-  before_validation :upcase!
-
+  before_validation :upcase_name!
   validates :name, presence: true
   validates :time_on, presence: true, unless: :day_off?
   validates :time_off, presence: true, unless: :day_off?
@@ -20,16 +45,17 @@ class Turn < ActiveRecord::Base
               :pad_with_zero,
               unless: :day_off?
   before_save :format_times
+  before_save :rename_spare_turn, if: :spare?
 
   ##
   # Returns a string representing the operating days of +Turn+.
   #
-  # M  - Monday  
-  # T  - Tuesday  
-  # W  - Wednesday  
-  # Th - Thursday  
-  # F  - Friday  
-  # S  - Saturday   
+  # M  - Monday
+  # T  - Tuesday
+  # W  - Wednesday
+  # Th - Thursday
+  # F  - Friday
+  # S  - Saturday
   #
   # * Adding ‘O’ to the abbreviation for the day or days
   #   (eg WO) means the train runs only on the day or
@@ -50,13 +76,17 @@ class Turn < ActiveRecord::Base
   #                  sat: false
   #
   #  turn.days_code # => 'SX'
-  
+
   def days_code
     DAY_CODES[binarize_days]
   end
+  
+  def display_name
+    spare? ? 'A/R' : name
+  end
 
 protected
-  
+
   ##
   # Returns a decimal +Integer+ representing the 7-bit binary representation of
   # +Turn+ operating days. Return value is used by +#days_code+ to look-up code
@@ -71,7 +101,7 @@ protected
   #
   #  turn.binarize_days # => 62
   #  # Decimal representation of '0111110'
-  
+
   def binarize_days
     [sun, mon, tue, wed, thu, fri, sat].map { |d| d ? '1' : '0' }.join.to_i(2)
   end
@@ -93,7 +123,7 @@ private
     [time_on, time_off].each { |t| t.gsub!(/\D/, '') }
   end
 
-  def upcase!
+  def upcase_name!
     name.upcase! if name
   end
 
@@ -109,18 +139,20 @@ private
   end
 
   def spare?
-    name == 'A/R'
+    name.match(/^S|A\/R/)
+  end
+  
+  def rename_spare_turn
+    self.name = "S#{time_on}#{time_off}"
   end
 
   def format_times
     if day_off?
       self.time_on = self.time_off = nil
-      return true
+    else
+      self.duration = diff(timify(time_on), timify(time_off))
+      self.hours = duration_in_words(duration)
     end
-    # self.start_time = timify(time_on)
-    # self.finish_time = timify(time_off)
-    self.duration = diff(timify(time_on), timify(time_off))
-    self.hours = duration_in_words(duration)
   end
 
   def diff(on, off)

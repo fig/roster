@@ -14,7 +14,7 @@ class TurnsController < ApplicationController
 
   # GET /turns/new
   def new
-    @turn = Turn.new sat: true
+    @turn = Turn.new
     @turns = Turn.all.order created_at: :desc
   end
 

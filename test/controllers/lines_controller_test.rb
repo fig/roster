@@ -18,11 +18,9 @@ class LinesControllerTest < ActionController::TestCase
 
   test "should create line" do
     assert_difference('Line.count') do
-      @line = Line.new number: "1"
-      post :create, line: { number: @line.number }
+      post :create, line: { number: '2', base_roster_id: @line.base_roster_id }
     end
-
-    assert_redirected_to line_path(assigns(:line))
+    assert_redirected_to base_roster_path(@line.base_roster_id)
   end
 
   test "should show line" do
