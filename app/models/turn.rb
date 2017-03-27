@@ -25,6 +25,9 @@
 #
 
 class Turn < ActiveRecord::Base
+  has_many :days
+  has_many :lines, through: :days
+  
   require 'time'
   include ActiveModel::Validations
 

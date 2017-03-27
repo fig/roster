@@ -28,16 +28,14 @@
         <td></td>
         <td><%= line.number %></td>
         <td><%= line.total_hours %></td>
-        <% line.to_a.each do |day| %>
-          <% turn = Turn.find_by(name: day.values.first, day.keys.first => true) %>
-          <td><%= turn.time_on if turn %></td>
-          <td><%= turn.time_off if turn %></td>
-          <td><%= turn.display_name if turn %></td>
-          <td><%= turn.hours if turn %></td>
-        <% end %>
+        <% line.days.each do |day| %>
+          <td><%= day.turn.time_on if day.turn %></td>
+          <td><%= day.turn.time_off if day.turn %></td>
+          <td><%= day.turn.display_name if day.turn %></td>
+          <td><%= day.turn.hours if day.turn %></td>
+        <% end %>  
         <td><%= link_to 'edit', edit_line_path(line) %></td>
       </tr>
     <% end %>
   </tbody>
-
 </table>
