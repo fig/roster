@@ -10,7 +10,6 @@ FactoryGirl.define do
     thu true
     fri true
     sat false
-    duration 3000
   end
 
   factory :line do
@@ -23,6 +22,12 @@ FactoryGirl.define do
     fri "A/R"
     sat "101"
     base_roster
+  end
+  
+  factory :day do
+    name "day"
+    line
+    turn
   end
 
   factory :base_roster do

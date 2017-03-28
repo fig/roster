@@ -54,26 +54,22 @@ class LineTest < ActiveSupport::TestCase
     @line.number = 'fred'
     refute @line.valid?
   end
-
-  test 'should return an array' do
-    assert_equal([{ sun: "201" },
-                  { mon: "01" },
-                  { tue: "41" },
-                  { wed: "RD" },
-                  { thu: "RD" },
-                  { fri: "A/R" },
-                  { sat: "101" }],
-                  @line.to_a)
+  
+  test 'should create association with turns' do
+    @line = create :line
+    assert_equal 7, @line.days.count
   end
-
+    
   test 'should calculate weekly hours' do
-    @line = create :line, sun: false,
+    turn01 = create :turn
+    turn101 = create :turn, name: '101', sun: true, duration: 3600
+    @line = create :line, sun: '101',
                         mon: '1',
                         tue: '1',
                         wed: '1',
                         thu: '1',
                         fri: '1',
-                        sat: false
-   # assert_equal('5.00', @line.total_hours)
+                        sat: ''
+   assert_equal '5:00', @line.total_hours
   end
 end

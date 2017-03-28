@@ -11,5 +11,10 @@
 #
 
 class Day < ActiveRecord::Base
+  belongs_to :line
   belongs_to :turn
+
+  def sunday?
+    name == 'sun'
+  end
 end

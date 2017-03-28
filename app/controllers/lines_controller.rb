@@ -25,7 +25,7 @@ class LinesController < ApplicationController
   # POST /lines.json
   def create
     @line = Line.new(line_params)
-
+    
     respond_to do |format|
       if @line.save
         format.html { redirect_to base_roster_path(@line.base_roster_id) }
