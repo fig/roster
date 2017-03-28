@@ -17,6 +17,8 @@
 #
 
 class Line < ActiveRecord::Base
+  include TimeFormatter
+  
   belongs_to :base_roster
   has_many :days
   has_many :turns, through: :days
@@ -28,14 +30,15 @@ class Line < ActiveRecord::Base
   validates_uniqueness_of :number, scope: :base_roster
 
   def total_hours
+    format_hhmm(duration)
+  end
+  
+  def duration
     total = 0
     weekdays.each do |day|
       total += day.duration
     end
-    
-    hh, ss = total.divmod(3600)
-    mm = ss / 60
-    format('%d:%02d', hh, mm)
+    total
   end
     
   def to_a

@@ -15,5 +15,15 @@
 
 # Base Roster, used to generate personal rosters
 class BaseRoster < ActiveRecord::Base
+  include TimeFormatter
+  
   has_many :lines
+  
+  def total_hours
+    total = 0
+    lines.each do |line|
+      total += line.duration
+    end
+    format_hhmm(total)
+  end
 end

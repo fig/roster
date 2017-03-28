@@ -25,11 +25,12 @@
 #
 
 class Turn < ActiveRecord::Base
-  has_many :days
-  has_many :lines, through: :days
-  
   require 'time'
   include ActiveModel::Validations
+  include TimeFormatter
+  
+  has_many :days
+  has_many :lines, through: :days
 
   DAY_CODES = {
     64 => 'Su',
@@ -154,7 +155,7 @@ private
       self.time_on = self.time_off = nil
     else
       self.duration = diff(timify(time_on), timify(time_off))
-      self.hours = duration_in_words(duration)
+      self.hours = format_hhmm(duration)
     end
   end
 
@@ -162,13 +163,7 @@ private
     off += 1.day if off < on
     off - on
   end
-
-  def duration_in_words(duration)
-    hh, ss = duration.divmod(3600)
-    mm = ss / 60
-    format('%d:%02d', hh, mm)
-  end
-
+  
   def timify(str)
     Time.strptime(str, '%H%M')
   end
