@@ -15,7 +15,7 @@ FactoryGirl.define do
   factory :line do
     number "1"
     sun "201"
-    mon "01"
+    mon "1"
     tue "41"
     wed "RD"
     thu "RD"

@@ -61,8 +61,8 @@ class LineTest < ActiveSupport::TestCase
   end
     
   test 'should calculate weekly hours' do
-    turn01 = create :turn
-    turn101 = create :turn, name: '101', sun: true, duration: 3600
+    create :turn
+    create :turn, name: '101', sun: true, duration: 3600
     @line = create :line, sun: '101',
                         mon: '1',
                         tue: '1',
