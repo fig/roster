@@ -20,10 +20,7 @@ class BaseRoster < ActiveRecord::Base
   has_many :lines
   
   def total_hours
-    total = 0
-    lines.each do |line|
-      total += line.duration
-    end
+    total = lines.map {|line| line.duration}.inject(0, :+)
     format_hhmm(total)
   end
 end

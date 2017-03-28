@@ -34,13 +34,9 @@ class Line < ActiveRecord::Base
   end
   
   def duration
-    total = 0
-    weekdays.each do |day|
-      total += day.duration
-    end
-    total
+    weekdays.map {|day| day.duration}.inject(0, :+)
   end
-    
+  
   def to_a
     [
       { sun: sun.to_s },
