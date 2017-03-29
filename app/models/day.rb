@@ -9,6 +9,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_days_on_line_id  (line_id)
+#  index_days_on_turn_id  (turn_id)
+#
 
 class Day < ActiveRecord::Base
   belongs_to :line

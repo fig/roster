@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.3.3'
 
+
 gem 'rails', '4.2.7'
+gem 'devise', '4.2.1'
 gem 'bcrypt', '3.1.7'
 gem 'faker', '1.4.2'
 gem 'carrierwave', '0.10.0'

@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :user do
+    
+  end
   factory :turn do
     name "1"
     time_on "0500"

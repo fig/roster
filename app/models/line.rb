@@ -15,6 +15,10 @@
 #  fri            :string
 #  sat            :string
 #
+# Indexes
+#
+#  index_lines_on_base_roster_id  (base_roster_id)
+#
 
 class Line < ActiveRecord::Base
   include TimeFormatter
