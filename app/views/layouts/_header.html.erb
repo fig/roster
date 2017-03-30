@@ -27,6 +27,22 @@
         <% end %>
       </ul>
     </nav>
-
   </div>
 </header>
+    <p><code>---------------stolen from---------------<br>
+    <a href="https://rubyonrails4makeitwork.wordpress.com/tag/cheat-sheet/">
+    https://rubyonrails4makeitwork.wordpress.com/tag/cheat-sheet/
+    </a></code></p>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<div id="container">
+<div id="user_nav">
+<% if user_signed_in? %>
+Signed in as <%= current_user.email %> Not You?
+<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+<% end %>
+</div>
+</div>
+    <p><code>---------------end of steal---------------</code></p>
