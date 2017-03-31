@@ -40,20 +40,20 @@ class Line < ActiveRecord::Base
   def duration
     weekdays.map {|day| day.duration}.inject(0, :+)
   end
-  
-  def to_a
-    [
-      { sun: sun.to_s },
-      { mon: mon.to_s },
-      { tue: tue.to_s },
-      { wed: wed.to_s },
-      { thu: thu.to_s },
-      { fri: fri.to_s },
-      { sat: sat.to_s }
-    ]
-  end
 
-  private
+private
+
+  def days_hash
+    {
+      sun: sun.to_s,
+      mon: mon.to_s,
+      tue: tue.to_s,
+      wed: wed.to_s,
+      thu: thu.to_s,
+      fri: fri.to_s,
+      sat: sat.to_s
+    }
+  end
 
   def strip_leading_zeros
     number.sub!(/^0+/, '') if number
@@ -67,8 +67,10 @@ class Line < ActiveRecord::Base
   
   def associate_turns
     self.days.delete_all
-    self.to_a.each do |day|
-      self.days.create name: day.keys.first, turn: Turn.find_by(name: day.values.first, day.keys.first => true)
+    days_hash.each do |day, turn|
+      self.days.create name: day,
+                       turn: Turn.find_by(name: turn,
+                                           day => true)
     end
   end
   
