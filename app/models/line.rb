@@ -22,7 +22,7 @@
 
 class Line < ActiveRecord::Base
   include TimeFormatter
-  
+
   belongs_to :base_roster
   has_many :days
   has_many :turns, through: :days
@@ -36,9 +36,9 @@ class Line < ActiveRecord::Base
   def total_hours
     format_hhmm(duration)
   end
-  
+
   def duration
-    weekdays.map {|day| day.duration}.inject(0, :+)
+    weekdays.map { |day| day.duration || 0 }.inject(0, :+)
   end
 
 private
@@ -64,7 +64,7 @@ private
       day.upcase! if day
     end
   end
-  
+
   def associate_turns
     self.days.delete_all
     days_hash.each do |day, turn|
@@ -73,7 +73,7 @@ private
                                            day => true)
     end
   end
-  
+
   def weekdays
     turns.select {|turn| turn.sun == false}
   end
