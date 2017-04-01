@@ -66,15 +66,14 @@ private
   end
 
   def associate_turns
-    self.days.delete_all
+    days.destroy_all
     days_hash.each do |day, turn|
-      self.days.create name: day,
-                       turn: Turn.find_by(name: turn,
-                                           day => true)
+        days.create name: day,
+                    turn: Turn.find_by(name: turn, day => true)
     end
   end
 
   def weekdays
-    turns.select {|turn| turn.sun == false}
+    turns.select { |turn| turn.sun == false }
   end
 end
