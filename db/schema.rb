@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329004808) do
+ActiveRecord::Schema.define(version: 20170331094518) do
 
   create_table "base_rosters", force: :cascade do |t|
     t.string   "name"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20170329004808) do
 
   add_index "lines", ["base_roster_id"], name: "index_lines_on_base_roster_id"
 
+  create_table "profiles", force: :cascade do |t|
+    t.string   "name_first",   default: ""
+    t.string   "name_last",    default: ""
+    t.date     "roster_epoch"
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
   create_table "turns", force: :cascade do |t|
     t.string   "name"
     t.string   "time_on",     limit: 4, default: ""
@@ -73,6 +84,11 @@ ActiveRecord::Schema.define(version: 20170329004808) do
     t.string   "days"
   end
 
+  create_table "turns_weeks", id: false, force: :cascade do |t|
+    t.integer "turn_id"
+    t.integer "week_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -90,5 +106,11 @@ ActiveRecord::Schema.define(version: 20170329004808) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "weeks", force: :cascade do |t|
+    t.integer  "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
