@@ -5,9 +5,12 @@ FactoryGirl.define do
     roster_epoch "2017-03-31"
     user nil
   end
+  
   factory :user do
-    
+    email "name@domain.com"
+    password "password"
   end
+  
   factory :turn do
     name "1"
     time_on "0500"
