@@ -24,8 +24,13 @@
 
 class User < ActiveRecord::Base
   has_one :profile
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def current_week_number
+    ((Date.today.beginning_of_week - profile.roster_epoch) / 7).to_i
+  end
 end

@@ -3,12 +3,13 @@ FactoryGirl.define do
     name_first "MyString"
     name_last "MyString"
     roster_epoch "2017-03-31"
-    user nil
   end
   
   factory :user do
     email "name@domain.com"
     password "password"
+    password_confirmation "password"
+    profile
   end
   
   factory :turn do
