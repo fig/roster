@@ -38,20 +38,20 @@ class Line < ActiveRecord::Base
   end
 
   def duration
-    weekdays.map { |day| day.duration || 0 }.inject(0, :+)
+    working_week_turns.map { |day| day.duration ||= 0 }.inject(0, :+)
   end
 
 private
 
   def days_hash
     {
-      sun: sun.to_s,
-      mon: mon.to_s,
-      tue: tue.to_s,
-      wed: wed.to_s,
-      thu: thu.to_s,
-      fri: fri.to_s,
-      sat: sat.to_s
+      sun: sun,
+      mon: mon,
+      tue: tue,
+      wed: wed,
+      thu: thu,
+      fri: fri,
+      sat: sat
     }
   end
 
@@ -73,7 +73,7 @@ private
     end
   end
 
-  def weekdays
+  def working_week_turns
     turns.select { |turn| turn.sun == false }
   end
 end

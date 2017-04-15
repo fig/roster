@@ -34,6 +34,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.8'
 end
 group :test do
+  gem 'timecop'
   gem 'minitest-reporters', '~> 1.1.0'
   gem 'mini_backtrace', '0.1.3'
   gem 'guard-minitest', '2.3.1'

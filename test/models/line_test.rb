@@ -35,11 +35,12 @@ class LineTest < ActiveSupport::TestCase
   test 'number should be unique to base_roster' do
     @line.base_roster_id = 1
     @line.save
-    another_line = build :line, base_roster_id: 1
-    refute another_line.valid?, 'Allowed duplicate name'
+    another_line = build :line, number: @line.number, base_roster_id: 1
+    refute another_line.valid?,
+    "Allowed duplicate number #{@line.number} && #{another_line.number}"
     another_line.base_roster_id = 2
-    assert another_line.valid?, "Didn't allow duplicate number in
-                                 different rosters"
+    assert another_line.valid?,
+    "Didn't allow duplicate number in different rosters"
   end
 
   test 'should strip leading zero before validation' do
@@ -60,7 +61,7 @@ class LineTest < ActiveSupport::TestCase
     assert_equal 7, @line.days.count
   end
     
-  test 'should calculate weekly hours' do
+  test 'should calculate duration and weekly hours' do
     create :turn
     create :turn, name: '101', sun: true, duration: 3600
     @line = create :line, sun: '101',
@@ -70,6 +71,7 @@ class LineTest < ActiveSupport::TestCase
                         thu: '1',
                         fri: '1',
                         sat: ''
+   assert_equal 18000, @line.duration                      
    assert_equal '5:00', @line.total_hours
   end
 end

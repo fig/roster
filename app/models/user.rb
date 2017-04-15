@@ -15,22 +15,25 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  base_roster_id         :integer
 #
 # Indexes
 #
+#  index_users_on_base_roster_id        (base_roster_id)
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
 class User < ActiveRecord::Base
   has_one :profile
+  belongs_to :base_roster
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def current_week_number
-    ((Date.today.beginning_of_week - profile.roster_epoch) / 7).to_i
+  def current_line
+    (((Date.today.beginning_of_week - profile.roster_epoch) / 7).to_i) % base_roster.lines.count
   end
 end

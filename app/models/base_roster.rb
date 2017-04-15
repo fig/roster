@@ -17,10 +17,11 @@
 class BaseRoster < ActiveRecord::Base
   include TimeFormatter
   
+  has_many :users
   has_many :lines
   
   def total_hours
-    total = lines.map {|line| line.duration}.inject(0, :+)
-    format_hhmm(total)
+    total_duration = lines.map {|line| line.duration}.inject(0, :+)
+    format_hhmm(total_duration)
   end
 end
