@@ -23,7 +23,7 @@
 class Line < ActiveRecord::Base
   include TimeFormatter
 
-  belongs_to :base_roster
+  belongs_to :base_roster, counter_cache: true
   has_many :days
   has_many :turns, through: :days
 

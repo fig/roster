@@ -21,7 +21,6 @@
 #  thu         :boolean
 #  fri         :boolean
 #  sat         :boolean
-#  days        :string
 #
 
 class Turn < ActiveRecord::Base

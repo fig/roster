@@ -11,6 +11,7 @@
 #  commencement_date :date
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  lines_count       :integer          default(0)
 #
 
 # Base Roster, used to generate personal rosters

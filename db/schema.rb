@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411234611) do
+ActiveRecord::Schema.define(version: 20170417223945) do
 
   create_table "base_rosters", force: :cascade do |t|
     t.string   "name"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20170411234611) do
     t.string   "link"
     t.integer  "duration"
     t.date     "commencement_date"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "lines_count",       default: 0
   end
 
   create_table "days", force: :cascade do |t|
@@ -81,7 +82,6 @@ ActiveRecord::Schema.define(version: 20170411234611) do
     t.boolean  "thu"
     t.boolean  "fri"
     t.boolean  "sat"
-    t.string   "days"
   end
 
   create_table "users", force: :cascade do |t|
