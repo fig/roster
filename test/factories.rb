@@ -3,8 +3,8 @@ FactoryGirl.define do
     "#{n}"
   end
   factory :profile do
-    name_first "MyString"
-    name_last "MyString"
+    name_first "Firstname"
+    name_last "Lastname"
     roster_epoch "2017-01-01"
   end
   
@@ -42,7 +42,7 @@ FactoryGirl.define do
 end
   
   factory :day do
-    name "day"
+    name "mon"
     line
     turn
   end

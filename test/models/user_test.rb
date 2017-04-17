@@ -15,4 +15,12 @@ class UserTest < ActiveSupport::TestCase
     Timecop.freeze(Date.new(2017, 04, 12))
     assert_equal 4, @user.current_line
   end
+  
+  test 'should know full name' do
+    assert_equal 'Firstname Lastname', @user.name
+  end
+  
+  test 'should know short_name name' do
+    assert_equal 'F Lastname', @user.short_name
+  end
 end
