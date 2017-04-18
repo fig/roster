@@ -2,7 +2,10 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   setup do
-    @base_roster = create :base_roster_with_lines
+    @base_roster = create :base_roster
+    ('1'..'10').each do |i|
+      create :line, number: i, base_roster: @base_roster
+    end
     @user = build :user, base_roster: @base_roster
   end
   
