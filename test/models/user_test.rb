@@ -23,7 +23,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'Firstname Lastname', @user.name
   end
   
-  test 'should know short_name name' do
+  test 'should know short_name' do
     assert_equal 'F Lastname', @user.short_name
   end
 end
