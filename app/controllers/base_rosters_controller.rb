@@ -1,6 +1,6 @@
 class BaseRostersController < ApplicationController
   before_action :eager_set_base_roster, only: [:show]
-  before_action :set_base_roster, only: [:show, :edit, :update, :destroy]
+  before_action :set_base_roster, only: [:edit, :update, :destroy]
 
   # GET /base_rosters
   # GET /base_rosters.json
