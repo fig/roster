@@ -72,6 +72,6 @@ class BaseRostersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def base_roster_params
-      params.require(:base_roster).permit(:name, :version, :depot, :link, :duration, :commencement_date)
+      params.require(:base_roster).permit(:name, :version, :depot, :suffix, :link, :duration, :commencement_date)
     end
 end

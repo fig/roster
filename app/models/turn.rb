@@ -2,25 +2,30 @@
 #
 # Table name: turns
 #
-#  id          :integer          not null, primary key
-#  name        :string
-#  time_on     :string(4)        default("")
-#  time_off    :string(4)        default("")
-#  duration    :time
-#  hours       :string
-#  start_time  :time
-#  finish_time :time
-#  created_at  :datetime
-#  updated_at  :datetime
-#  start_date  :date
-#  end_date    :date
-#  sun         :boolean
-#  mon         :boolean
-#  tue         :boolean
-#  wed         :boolean
-#  thu         :boolean
-#  fri         :boolean
-#  sat         :boolean
+#  id             :integer          not null, primary key
+#  name           :string
+#  time_on        :string(4)        default("")
+#  time_off       :string(4)        default("")
+#  duration       :time
+#  hours          :string
+#  start_time     :time
+#  finish_time    :time
+#  created_at     :datetime
+#  updated_at     :datetime
+#  start_date     :date
+#  end_date       :date
+#  sun            :boolean
+#  mon            :boolean
+#  tue            :boolean
+#  wed            :boolean
+#  thu            :boolean
+#  fri            :boolean
+#  sat            :boolean
+#  base_roster_id :integer
+#
+# Indexes
+#
+#  index_turns_on_base_roster_id  (base_roster_id)
 #
 
 class Turn < ActiveRecord::Base
@@ -28,6 +33,7 @@ class Turn < ActiveRecord::Base
   include ActiveModel::Validations
   include TimeFormatter
   
+  belongs_to :base_roster
   has_many :days
   has_many :lines, through: :days
 
@@ -84,8 +90,34 @@ class Turn < ActiveRecord::Base
     DAY_CODES[binarize_days]
   end
   
-  def display_name
-    spare? ? 'A/R' : name
+  def name_for(type=:normal)
+    case type
+    when :display
+      if running_turn?
+        base_roster.suffix + name
+      elsif spare?
+        'A/R'
+      elsif day_off?
+        name
+      else
+        name
+      end
+    when :roster
+      if running_turn?
+        name.rjust(4, '0')
+      elsif spare?
+        'A/R'
+      elsif day_off?
+        if sun
+          ''
+        else name
+        end
+      else
+        name
+      end
+    else
+      name
+    end
   end
 
 protected
@@ -143,6 +175,10 @@ private
 
   def spare?
     name.match(/^S|A\/R/)
+  end
+  
+  def running_turn?
+    name.to_f != 0.0
   end
   
   def rename_spare_turn

@@ -12,6 +12,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  lines_count       :integer          default(0)
+#  suffix            :string
 #
 
 # Base Roster, used to generate personal rosters
@@ -20,6 +21,7 @@ class BaseRoster < ActiveRecord::Base
   
   has_many :users
   has_many :lines
+  has_many :turns
   
   def total_hours
     total_duration = lines.map {|line| line.duration}.inject(0, :+)

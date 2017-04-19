@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417223945) do
+ActiveRecord::Schema.define(version: 20170418191354) do
 
   create_table "base_rosters", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170417223945) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "lines_count",       default: 0
+    t.string   "suffix"
   end
 
   create_table "days", force: :cascade do |t|
@@ -65,8 +66,8 @@ ActiveRecord::Schema.define(version: 20170417223945) do
 
   create_table "turns", force: :cascade do |t|
     t.string   "name"
-    t.string   "time_on",     limit: 4, default: ""
-    t.string   "time_off",    limit: 4, default: ""
+    t.string   "time_on",        limit: 4, default: ""
+    t.string   "time_off",       limit: 4, default: ""
     t.time     "duration"
     t.string   "hours"
     t.time     "start_time"
@@ -82,7 +83,10 @@ ActiveRecord::Schema.define(version: 20170417223945) do
     t.boolean  "thu"
     t.boolean  "fri"
     t.boolean  "sat"
+    t.integer  "base_roster_id"
   end
+
+  add_index "turns", ["base_roster_id"], name: "index_turns_on_base_roster_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

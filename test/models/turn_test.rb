@@ -95,12 +95,26 @@ class TurnTest < ActiveSupport::TestCase
   test 'spare turn should rename itself' do
     spare_turn = create :turn, name: 's', time_on: '0700', time_off: '1500'
     assert_equal 'S07001500', spare_turn.name
-    assert_equal 'A/R', spare_turn.display_name
+    assert_equal 'A/R', spare_turn.name_for(:display)
+    assert_equal 'A/R', spare_turn.name_for(:roster)
   end
   
-  test 'running turn shoud not rename' do
+  test 'running turn shoud rename itself' do
     turn = create :turn
-    assert_equal '1', turn.display_name
+    assert_equal 'VG1', turn.name_for(:display)
+    assert_equal '0001', turn.name_for(:roster)
+  end
+  
+  test 'Sunday off shoud rename itself' do
+    turn = create :turn, name: 'OFF', sun: true
+    assert_equal 'OFF', turn.name_for(:display)
+    assert_equal '', turn.name_for(:roster)
+  end
+  
+  test 'Rest Day shoud rename itself' do
+    turn = create :turn, name: 'RD'
+    assert_equal 'RD', turn.name_for(:display)
+    assert_equal 'RD', turn.name_for(:roster)
   end
 
   test 'allow multiple Spare Turns' do

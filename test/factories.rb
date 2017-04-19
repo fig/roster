@@ -25,6 +25,7 @@ FactoryGirl.define do
     thu true
     fri true
     sat false
+    base_roster
   end
 
   factory :line do
@@ -49,6 +50,7 @@ end
     name "MyString"
     version "MyString"
     depot "MyString"
+    suffix "VG"
     link "MyString"
     duration 13
     #commencement_date 2016-08-01
