@@ -23,6 +23,7 @@ gem 'spring', '1.1.3'
 gem 'rails-erd'
 gem 'simple_form', '~> 3.4'
 group :development, :test do
+  gem 'bullet'
   gem "letter_opener"
   gem 'annotate'
   gem 'pry-byebug'

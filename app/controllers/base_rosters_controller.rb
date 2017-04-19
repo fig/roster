@@ -1,4 +1,5 @@
 class BaseRostersController < ApplicationController
+  before_action :eager_set_base_roster, only: [:show]
   before_action :set_base_roster, only: [:show, :edit, :update, :destroy]
 
   # GET /base_rosters
@@ -65,6 +66,10 @@ class BaseRostersController < ApplicationController
   private
 
     # Use callbacks to share common setup or constraints between actions.
+
+    def eager_set_base_roster
+      @base_roster = BaseRoster.includes(lines: [:days, :turns]).find(params[:id])
+    end
 
     def set_base_roster
       @base_roster = BaseRoster.find(params[:id])
