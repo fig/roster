@@ -31,6 +31,8 @@ module Scheduler
       drivers[index]
     end
 
+  private
+
     def week
       week = line.number.to_i - diff
       week += roster_size line while week < 1
@@ -51,6 +53,6 @@ module Scheduler
   end
 
   def roster_size(obj)
-    obj.roster_size
+    obj.base_roster.lines_count
   end
 end
