@@ -1,37 +1,56 @@
-class Scheduler
-  def self.which_turn(user, date)
-    week, day = (date - user.roster_epoch).to_i.divmod(7)
-    week = week % roster_size(user)
-    user.base_roster.lines[week].days[day].turn
+module Scheduler
+  class WhichTurn
+    include Scheduler
+    attr_accessor :user, :date
+
+    def initialize(user, date)
+      @user = user
+      @date = date
+    end
+
+    def turn
+      week, day = (date - user.roster_epoch).to_i.divmod(7)
+      week = week % roster_size(user)
+      user.base_roster.lines[week].days[day].turn
+    end
   end
 
-  def self.which_driver(turn, date)
+  class WhichDriver
+    include Scheduler
+    attr_accessor :turn, :date
 
-    # find day of week from date
-    day = date.strftime('%a').downcase.to_sym
+    def initialize(turn, date)
+      @turn = turn
+      @date = date
+    end
 
-    # find line  where day has turn
-    line = Line.find_by(day => turn.name)
+    def driver
+      drivers = User.all
+      drivers_lines = drivers.map(&:current_line)
+      index = drivers_lines.index week - 1
+      drivers[index]
+    end
 
-    # find difference in weeks between date and now
-    diff = ((date.beginning_of_week - Date.today.beginning_of_week) / 7).to_i
+    def week
+      week = line.number.to_i - diff
+      week += roster_size line while week < 1
+      week
+    end
 
-    # calc difference modulo total lines (number of weeks to next occurance)
-    diff = diff % roster_size(line)
+    def day
+      date.strftime('%a').downcase.to_sym
+    end
 
-    # current week for tgt driver is line number - modulo
-    driver_on_week = line.number.to_i - diff
+    def line
+      Line.find_by(day => turn.name)
+    end
 
-    driver_on_week += roster_size(line) while driver_on_week < 1
-    # find driver on that week
-
-    drivers = User.all
-    drivers_lines = drivers.map(&:current_line)
-    index = drivers_lines.index driver_on_week - 1
-    drivers[index]
+    def diff
+      ((date.beginning_of_week - Date.today.beginning_of_week) / 7).to_i % roster_size(line)
+    end
   end
 
-  def self.roster_size(obj)
-    obj.base_roster.lines_count
+  def roster_size(obj)
+    obj.roster_size
   end
 end
