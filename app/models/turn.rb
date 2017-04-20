@@ -32,7 +32,7 @@ class Turn < ActiveRecord::Base
   require 'time'
   include ActiveModel::Validations
   include TimeFormatter
-  
+
   belongs_to :base_roster
   has_many :days
   has_many :lines, through: :days
@@ -89,7 +89,7 @@ class Turn < ActiveRecord::Base
   def days_code
     DAY_CODES[binarize_days]
   end
-  
+
   def name_for(type=:normal)
     case type
     when :display
@@ -176,11 +176,11 @@ private
   def spare?
     name.match(/^S|A\/R/)
   end
-  
+
   def running_turn?
     name.to_f != 0.0
   end
-  
+
   def rename_spare_turn
     self.name = "S#{time_on}#{time_off}"
   end
@@ -198,7 +198,7 @@ private
     off += 1.day if off < on
     off - on
   end
-  
+
   def timify(str)
     Time.strptime(str, '%H%M')
   end

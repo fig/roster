@@ -1,6 +1,6 @@
 module TimeFormatter
   extend ActiveSupport::Concern
-  
+
   def format_hhmm(duration)
     hh, ss = duration.divmod(3600)
     mm = ss / 60

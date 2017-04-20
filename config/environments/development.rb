@@ -15,7 +15,7 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  
+
   # Preview email in the default browser instead of sending it.
   config.action_mailer.delivery_method = :letter_opener
 
@@ -39,11 +39,11 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
-  
+
   ### DEVISE ###
   # default URL options for the Devise mailer
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  
+
   ### BULLET ###
   config.after_initialize do
     Bullet.enable = true

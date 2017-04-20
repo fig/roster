@@ -4,6 +4,10 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# reports etc.
+reek.html
+rails_best_practices_output.html
+
 # Ignore bundler config.
 /.bundle
 

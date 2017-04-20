@@ -18,11 +18,11 @@
 # Base Roster, used to generate personal rosters
 class BaseRoster < ActiveRecord::Base
   include TimeFormatter
-  
+
   has_many :users
   has_many :lines
   has_many :turns
-  
+
   def total_hours
     total_duration = lines.map {|line| line.duration}.inject(0, :+)
     format_hhmm(total_duration)

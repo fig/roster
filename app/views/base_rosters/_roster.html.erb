@@ -29,11 +29,11 @@
         <td><%= line.number %></td>
         <td><%= line.total_hours %></td>
         <% line.days.each do |day| %>
-          <td><%= day.turn.time_on if day.turn %></td>
-          <td><%= day.turn.time_off if day.turn %></td>
+          <td><%= day.time_on if day.turn %></td>
+          <td><%= day.time_off if day.turn %></td>
           <td><%= day.turn.name_for :roster if day.turn %></td>
-          <td><%= day.turn.hours if day.turn %></td>
-        <% end %>  
+          <td><%= day.hours if day.turn %></td>
+        <% end %>
         <td><%= link_to 'edit', edit_line_path(line) %></td>
       </tr>
     <% end %>

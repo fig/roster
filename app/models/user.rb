@@ -27,20 +27,21 @@
 class User < ActiveRecord::Base
   has_one :profile
   belongs_to :base_roster
-  
+  delegate :roster_epoch, :to => :profile
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   def current_line
-    (((Date.today.beginning_of_week - profile.roster_epoch) / 7).to_i) % base_roster.lines.count
+    (((Date.today.beginning_of_week - roster_epoch) / 7).to_i) % base_roster.lines.size
   end
-  
+
   def name
     profile.name_first + ' ' + profile.name_last
   end
-  
+
   def short_name
     initial = profile.name_first.chars[0]
     initial + ' ' + profile.name_last
