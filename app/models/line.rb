@@ -3,7 +3,7 @@
 # Table name: lines
 #
 #  id             :integer          not null, primary key
-#  number         :string
+#  number         :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  base_roster_id :integer
@@ -27,7 +27,7 @@ class Line < ActiveRecord::Base
   has_many :days
   has_many :turns, through: :days
 
-  before_validation :strip_leading_zeros, :upcase!
+  before_validation :upcase!
   after_save :associate_turns
 
   validates :number, presence: true, numericality: true
@@ -53,10 +53,6 @@ private
       fri: fri,
       sat: sat
     }
-  end
-
-  def strip_leading_zeros
-    number.sub!(/^0+/, '') if number
   end
 
   def upcase!

@@ -10,8 +10,9 @@ module Scheduler
 
     def turn
       week, day = (date - user.roster_epoch).to_i.divmod(7)
-      week = week % roster_size(user)
-      user.base_roster.lines[week].days[day].turn
+      linenum = week % roster_size(user)
+      line = user.base_roster.lines.where(number: linenum + 1).first
+      line.days[day].turn
     end
   end
 

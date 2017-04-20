@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418191354) do
+ActiveRecord::Schema.define(version: 20170420151147) do
 
   create_table "base_rosters", force: :cascade do |t|
     t.string   "name"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170418191354) do
   add_index "days", ["turn_id"], name: "index_days_on_turn_id"
 
   create_table "lines", force: :cascade do |t|
-    t.string   "number"
+    t.integer  "number"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "base_roster_id"

@@ -43,24 +43,16 @@ class LineTest < ActiveSupport::TestCase
     "Didn't allow duplicate number in different rosters"
   end
 
-  test 'should strip leading zero before validation' do
-    { '01': '1', '001': '1', '10': '10' }.each do |key, value|
-      @line.number = key
-      @line.valid?
-      assert_equal value, @line.number, 'Validated line without stripping zero'
-    end
-  end
-
   test 'number should be numeric' do
     @line.number = 'fred'
     refute @line.valid?
   end
-  
+
   test 'should create association with turns' do
     @line = create :line
     assert_equal 7, @line.days.count
   end
-    
+
   test 'should calculate duration and weekly hours' do
     create :turn
     create :turn, name: '101', sun: true, duration: 3600
@@ -71,7 +63,7 @@ class LineTest < ActiveSupport::TestCase
                         thu: '1',
                         fri: '1',
                         sat: ''
-   assert_equal 18000, @line.duration                      
+   assert_equal 18000, @line.duration
    assert_equal '5:00', @line.total_hours
   end
 end
