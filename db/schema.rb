@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420151147) do
+ActiveRecord::Schema.define(version: 20170420200126) do
 
   create_table "base_rosters", force: :cascade do |t|
     t.string   "name"
@@ -102,6 +102,9 @@ ActiveRecord::Schema.define(version: 20170420151147) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "base_roster_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
   end
 
   add_index "users", ["base_roster_id"], name: "index_users_on_base_roster_id"

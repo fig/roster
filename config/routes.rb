@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   resources :profiles
-  devise_for :users
+  devise_for :users,
+  :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :base_rosters
   resources :lines
   resources :turns
