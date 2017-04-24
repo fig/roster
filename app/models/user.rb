@@ -28,10 +28,9 @@
 #
 
 class User < ActiveRecord::Base
+  belongs_to :base_roster
   has_one :profile
   accepts_nested_attributes_for :profile
-  after_create :create_profile
-  belongs_to :base_roster
   delegate :roster_epoch, :to => :profile
 
   # Include default devise modules. Others available are:
