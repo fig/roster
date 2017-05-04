@@ -4,7 +4,7 @@ class SchedulerTest < ActiveSupport::TestCase
   setup do
     @turn = create :turn
     @base_roster = create :base_roster
-    ('1'..'10').each do |i|
+    (1..3).each do |i|
       create :line, number: i, base_roster: @base_roster
     end
     @user = create :user, base_roster: @base_roster
@@ -12,14 +12,14 @@ class SchedulerTest < ActiveSupport::TestCase
   end
 
   test 'should return Turn, given User and Date' do
-    assert_equal @turn, Scheduler::WhichTurn.new(@user, @date).turn
+    assert_equal @turn, Scheduler.new(user: @user, date: @date).which_turn
   end
 
   test 'should return Turn, given User and Date, after going around the clock' do
-    assert_equal @turn, Scheduler::WhichTurn.new(@user, Date.new(2017, 03, 13)).turn
+    assert_equal @turn, Scheduler.new(user: @user, date: Date.new(2017, 03, 13)).which_turn
   end
 
   test 'should return User, given Turn and Date' do
-    assert_equal @user, Scheduler::WhichDriver.new(@turn, @date).driver
+    assert_equal @user, Scheduler.new(turn: @turn, date: @date).which_driver
   end
 end

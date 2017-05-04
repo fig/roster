@@ -1,11 +1,11 @@
 FactoryGirl.define do
-  
+
   factory :profile do
     name_first "Firstname"
     name_last "Lastname"
     roster_epoch "2017-01-01"
   end
-  
+
   factory :user do
     email "name@domain.com"
     password "password"
@@ -13,7 +13,7 @@ FactoryGirl.define do
     base_roster
     profile
   end
-  
+
   factory :turn do
     name "1"
     time_on "0500"
@@ -29,7 +29,7 @@ FactoryGirl.define do
   end
 
   factory :line do
-    number "1"
+    number 1
     sun "201"
     mon "1"
     tue "41"
@@ -39,7 +39,7 @@ FactoryGirl.define do
     sat "101"
     base_roster
 end
-  
+
   factory :day do
     name "mon"
     line
