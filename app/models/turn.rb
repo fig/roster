@@ -90,8 +90,8 @@ class Turn < ActiveRecord::Base
     DAY_CODES[binarize_days]
   end
 
-  def name_for(type=:normal)
-    case type
+  def name_for(opt=:normal)
+    case opt
     when :display
       if running_turn?
         base_roster.suffix + name
