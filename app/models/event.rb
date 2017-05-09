@@ -1,4 +1,5 @@
 class Event
+  attr_reader :turn
 
   def initialize(date, turn)
     @date = date
