@@ -119,6 +119,10 @@ class Turn < ActiveRecord::Base
       name
     end
   end
+  
+  def start_time
+    timify time_on
+  end
 
 protected
 

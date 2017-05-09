@@ -91,26 +91,26 @@ class TurnTest < ActiveSupport::TestCase
     another_turn.mon = true
     refute another_turn.valid?, 'Allowed duplicate Turn on same day'
   end
-  
+
   test 'spare turn should rename itself' do
     spare_turn = create :turn, name: 's', time_on: '0700', time_off: '1500'
     assert_equal 'S07001500', spare_turn.name
     assert_equal 'A/R', spare_turn.name_for(:display)
     assert_equal 'A/R', spare_turn.name_for(:roster)
   end
-  
+
   test 'running turn shoud rename itself' do
     turn = create :turn
     assert_equal 'VG1', turn.name_for(:display)
     assert_equal '0001', turn.name_for(:roster)
   end
-  
+
   test 'Sunday off shoud rename itself' do
     turn = create :turn, name: 'OFF', sun: true
     assert_equal 'OFF', turn.name_for(:display)
     assert_equal '', turn.name_for(:roster)
   end
-  
+
   test 'Rest Day shoud rename itself' do
     turn = create :turn, name: 'RD'
     assert_equal 'RD', turn.name_for(:display)
@@ -121,5 +121,11 @@ class TurnTest < ActiveSupport::TestCase
     create :turn, name: 'S', mon: true
     another_turn = build :turn, name: 'S', mon: true
     assert another_turn.valid?, "Didn't allow duplicate Spare turn"
+  end
+
+  test 'start_time' do
+    time = Timecop.freeze(Time.local(1990, 1, 1, 5))
+    turn = build :turn
+    assert_equal time, turn.start_time
   end
 end

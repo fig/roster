@@ -22,3 +22,15 @@
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>
+
+<%# Calendar %>
+<%= month_calendar events: @events do |date, events| %>
+  <%= date.strftime "%d" %>
+
+  <% events.each do |event| %>
+    <div>
+      <%= event.start_time.strftime "%H%M" %> -
+      <%= event.summary %>
+    </div>
+  <% end %>
+<% end %>

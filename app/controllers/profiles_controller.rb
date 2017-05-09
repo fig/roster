@@ -10,6 +10,16 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    if params[:start_date]
+      start = params[:start_date].to_date
+    else
+      start = Date.today
+    end
+    @events = Array.new
+    (start.beginning_of_month.beginning_of_week .. start.end_of_month.end_of_week).each do |date|
+      turn = Scheduler.new(user: current_user, date: date).which_turn
+      @events << Event.new(date, turn) unless turn.send(:day_off?)
+    end
   end
 
   # GET /profiles/new

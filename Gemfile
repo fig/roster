@@ -25,6 +25,7 @@ gem 'simple_form', '~> 3.4'
 gem 'google-api-client', '~> 0.11'#, :require => 'google/api_client'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'simple_calendar', '~> 2.0'
 group :development do
   gem 'web-console'
 end
