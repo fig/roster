@@ -11,8 +11,7 @@ class Scheduler
   def which_turn
     week, day = (@date - @user.roster_epoch).to_i.divmod(7)
     linenum = week % roster_size(@user)
-    line = @user.base_roster.lines.includes(:turns).where(number: linenum + 1).first
-    # line = @user.base_roster.lines.where(number: linenum + 1).first
+    line = @user.base_roster.lines.includes(days: :turn).find_by(number: linenum + 1)
     line.days[day].turn
   end
 

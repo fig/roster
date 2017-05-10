@@ -101,7 +101,7 @@ class TurnTest < ActiveSupport::TestCase
 
   test 'running turn shoud rename itself' do
     turn = create :turn
-    assert_equal 'VG1', turn.name_for(:display)
+    assert_equal 'VG1', turn.name_for(:display, 'VG')
     assert_equal '0001', turn.name_for(:roster)
   end
 

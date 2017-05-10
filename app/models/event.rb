@@ -10,7 +10,7 @@ class Event
     @date.to_time + @turn.start_time.seconds_since_midnight
   end
 
-  def summary
-    @turn.name_for :display
+  def summary(suffix)
+    @turn.name_for :display, suffix
   end
 end

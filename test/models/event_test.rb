@@ -10,6 +10,6 @@ class EventTest < ActiveSupport::TestCase
     event = Event.new(@date, @turn)
     assert_equal Event, event.class
     assert_equal '2017-01-02 05:00:00 +0000' , event.start_time.inspect
-    assert_equal 'VG1', event.summary
+    assert_equal 'VG1', event.summary('VG')
   end
 end

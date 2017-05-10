@@ -30,7 +30,7 @@
   <% events.each do |event| %>
     <div>
       <%= event.start_time.strftime "%H%M" %> -
-      <%= link_to event.summary, event.turn %>
+      <%= link_to event.summary(roster_suffix), event.turn %>
     </div>
   <% end %>
 <% end %>
