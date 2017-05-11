@@ -4,7 +4,7 @@ class TurnsController < ApplicationController
   # GET /turns
   # GET /turns.json
   def index
-    @turns = Turn.all.order :name
+    @turns = Turn.where(base_roster_id: 5).order :name
   end
 
   # GET /turns/1
@@ -14,8 +14,8 @@ class TurnsController < ApplicationController
 
   # GET /turns/new
   def new
-    @turn = Turn.new
-    @turns = Turn.all.order created_at: :desc
+    @turn = Turn.new mon: true, tue: true,wed: true,thu: true
+    @turns = Turn.where(base_roster_id: 5).order created_at: :desc
   end
 
   # GET /turns/1/edit
@@ -80,6 +80,7 @@ class TurnsController < ApplicationController
                                  :wed,
                                  :thu,
                                  :fri,
-                                 :sat)
+                                 :sat,
+                                 :base_roster_id)
   end
 end

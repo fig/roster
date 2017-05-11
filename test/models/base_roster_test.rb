@@ -21,9 +21,14 @@ class BaseRosterTest < ActiveSupport::TestCase
   end
 
   test "block hours" do
-    create :turn
-    create :turn, name: '101', sun: true
-    @line = create :line, sun: '101', mon: '1', tue: '1', base_roster_id: 1
+    create :turn, base_roster: @base_roster
+    create :turn, name: '101',
+                  sun: true,
+                  base_roster: @base_roster
+    @line = create :line, sun: '101',
+                          mon: '1',
+                          tue: '1',
+                          base_roster: @base_roster
     assert_equal '2:00', @base_roster.total_hours
   end
 end

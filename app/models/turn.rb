@@ -119,7 +119,7 @@ class Turn < ActiveRecord::Base
       name
     end
   end
-  
+
   def start_time
     timify time_on
   end
@@ -148,7 +148,7 @@ protected
 private
 
   def one_turn_per_day
-    dupes = Turn.where(name: name).where.not(id: id)
+    dupes = Turn.where(name: name, base_roster_id: base_roster_id).where.not(id: id)
     dupes.each do |dupe|
       errors[:base] << 'This turn already exists for this day' if clash?(dupe)
     end

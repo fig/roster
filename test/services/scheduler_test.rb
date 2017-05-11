@@ -3,11 +3,11 @@ require 'test_helper'
 class SchedulerTest < ActiveSupport::TestCase
   setup do
     @turn = create :turn
-    @base_roster = create :base_roster
+    # @base_roster = create :base_roster
     (1..3).each do |i|
-      create :line, number: i, base_roster: @base_roster
+      create :line, number: i, base_roster_id: 1
     end
-    @user = create :user, base_roster: @base_roster
+    @user = create :user, base_roster_id: 1
     @date = Date.new(2017, 1, 2)
   end
 
