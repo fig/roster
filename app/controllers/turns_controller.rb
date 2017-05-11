@@ -4,7 +4,7 @@ class TurnsController < ApplicationController
   # GET /turns
   # GET /turns.json
   def index
-    @turns = Turn.where(base_roster_id: 5).order :name
+    @turns = Turn.all.order :time_on
   end
 
   # GET /turns/1

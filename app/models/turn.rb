@@ -22,6 +22,7 @@
 #  fri            :boolean
 #  sat            :boolean
 #  base_roster_id :integer
+#  shift          :string
 #
 # Indexes
 #

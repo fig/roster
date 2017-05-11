@@ -18,7 +18,7 @@
 class Day < ActiveRecord::Base
   belongs_to :line
   belongs_to :turn
-  delegate :time_on, :time_off, :hours, :to => :turn
+  delegate :time_on, :time_off, :shift, :hours, :to => :turn
 
   # def sunday?
   #   name == 'sun'
