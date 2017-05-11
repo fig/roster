@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420200126) do
+ActiveRecord::Schema.define(version: 20170511015841) do
 
   create_table "base_rosters", force: :cascade do |t|
     t.string   "name"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20170420200126) do
     t.boolean  "fri"
     t.boolean  "sat"
     t.integer  "base_roster_id"
+    t.string   "shift"
   end
 
   add_index "turns", ["base_roster_id"], name: "index_turns_on_base_roster_id"

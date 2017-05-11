@@ -1,6 +1,7 @@
 <table id="turns_table" class="table table-condensed table-striped">
   <tr>
     <th>Turn</th>
+    <th>Shift</th>
     <th>On</th>
     <th>Off</th>
     <th>Hours</th>
@@ -12,6 +13,7 @@
     <% @turns.each do |turn| %>
       <tr>
         <td><%= turn.name %></td>
+        <td><%= turn.shift %></td>
         <td><%= turn.time_on %></td>
         <td><%= turn.time_off %></td>
         <td><%= turn.hours %></td>

@@ -54,15 +54,16 @@ class LineTest < ActiveSupport::TestCase
   end
 
   test 'should calculate duration and weekly hours' do
-    create :turn
-    create :turn, name: '101', sun: true, duration: 3600
-    @line = create :line, sun: '101',
-                        mon: '1',
-                        tue: '1',
-                        wed: '1',
-                        thu: '1',
-                        fri: '1',
-                        sat: ''
+    create :turn, base_roster_id: 1
+    create :turn, name: '101', sun: true, duration: 3600, base_roster_id: 1
+    @line = create :line, base_roster_id: 1,
+                          sun: '101',
+                          mon: '1',
+                          tue: '1',
+                          wed: '1',
+                          thu: '1',
+                          fri: '1',
+                          sat: ''
    assert_equal 18000, @line.duration
    assert_equal '5:00', @line.total_hours
   end

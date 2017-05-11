@@ -65,7 +65,7 @@ private
     days.destroy_all
     days_hash.each do |day, turn|
         days.create name: day,
-                    turn: Turn.find_by(name: turn, day => true)
+                    turn: Turn.find_by(base_roster_id: base_roster_id, name: turn, day => true)
     end
   end
 

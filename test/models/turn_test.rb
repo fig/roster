@@ -86,7 +86,8 @@ class TurnTest < ActiveSupport::TestCase
                                 wed: false,
                                 thu: false,
                                 fri: false,
-                                sun: true
+                                sun: true,
+                                base_roster_id: 1
     assert another_turn.valid? "Didn't allow same turn on different day"
     another_turn.mon = true
     refute another_turn.valid?, 'Allowed duplicate Turn on same day'
