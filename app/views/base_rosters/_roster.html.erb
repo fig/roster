@@ -31,7 +31,7 @@
         <% line.days.each do |day| %>
           <td><%= day.time_on if day.turn %></td>
           <td><%= day.time_off if day.turn %></td>
-          <%= content_tag(:td, "#{day.turn.name_for :roster if day.turn}", class: day.shift) %>
+          <%= content_tag :td, "#{day.turn.name_for :roster if day.turn}", class: day.shift %>
           <td><%= day.hours if day.turn %></td>
         <% end %>
         <td><%= link_to 'edit', edit_line_path(line) %></td>
