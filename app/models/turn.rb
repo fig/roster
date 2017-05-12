@@ -122,7 +122,7 @@ class Turn < ActiveRecord::Base
   end
 
   def start_time
-    timify time_on
+    timify time_on if time_on
   end
 
 protected
