@@ -7,13 +7,13 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  base_roster_id :integer
-#  sun            :string
-#  mon            :string
-#  tue            :string
-#  wed            :string
-#  thu            :string
-#  fri            :string
-#  sat            :string
+#  sun            :string           default("OFF")
+#  mon            :string           default("RD")
+#  tue            :string           default("RD")
+#  wed            :string           default("RD")
+#  thu            :string           default("RD")
+#  fri            :string           default("RD")
+#  sat            :string           default("RD")
 #
 # Indexes
 #

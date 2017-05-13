@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511015841) do
+ActiveRecord::Schema.define(version: 20170513003358) do
 
   create_table "base_rosters", force: :cascade do |t|
     t.string   "name"
@@ -39,16 +39,16 @@ ActiveRecord::Schema.define(version: 20170511015841) do
 
   create_table "lines", force: :cascade do |t|
     t.integer  "number"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "base_roster_id"
-    t.string   "sun"
-    t.string   "mon"
-    t.string   "tue"
-    t.string   "wed"
-    t.string   "thu"
-    t.string   "fri"
-    t.string   "sat"
+    t.string   "sun",            default: "OFF"
+    t.string   "mon",            default: "RD"
+    t.string   "tue",            default: "RD"
+    t.string   "wed",            default: "RD"
+    t.string   "thu",            default: "RD"
+    t.string   "fri",            default: "RD"
+    t.string   "sat",            default: "RD"
   end
 
   add_index "lines", ["base_roster_id"], name: "index_lines_on_base_roster_id"
