@@ -57,7 +57,7 @@ private
 
   def upcase!
     [sun, mon, tue, wed, thu, fri, sat].each do |day|
-      day.upcase! if day
+      day.upcase!
     end
   end
 
