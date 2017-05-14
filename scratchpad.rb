@@ -2,7 +2,7 @@
 
 start_of_set = proc do |day|
   index = day.line.days.index(day)
-  day.line.days[index - 1].turn_id.nil?
+  !day.turn.nil? & day.line.days[index - 1].turn_id.nil?
 end
 
 Day.includes(line: [:days])
