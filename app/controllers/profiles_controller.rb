@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
     @events = Array.new
     (start.beginning_of_month.beginning_of_week .. start.end_of_month.end_of_week).each do |date|
       turn = Scheduler.new(user: current_user, date: date).which_turn
-      @events << Event.new(date, turn) unless turn.send(:day_off?)
+      @events << Event.new(date, turn) unless turn.day_off?
     end
   end
 
