@@ -16,7 +16,7 @@ class Scheduler
   end
 
   def which_driver
-    drivers = User.all
+    drivers = User.all.includes :profile, :base_roster
     drivers_lines = drivers.map(&:current_line)
     index = drivers_lines.index week - 1
     drivers[index]
@@ -25,7 +25,7 @@ class Scheduler
   private
 
   def week
-    week = line.number.to_i - diff
+    week = line.number - diff
     week += roster_size line while week < 1
     week
   end
