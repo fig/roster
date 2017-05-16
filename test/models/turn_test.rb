@@ -129,4 +129,11 @@ class TurnTest < ActiveSupport::TestCase
     turn = build :turn
     assert_equal time, turn.start_time
   end
+
+  test 'day_off?' do
+    %w(EX1, RD, OFF).each do |name|
+      turn = build :turn, name: name
+      assert turn.day_off?
+    end
+  end
 end

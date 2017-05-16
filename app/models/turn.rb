@@ -125,6 +125,10 @@ class Turn < ActiveRecord::Base
     timify time_on if time_on
   end
 
+  def day_off?
+    %w(RD OFF EX).any? { |n| name.include? n }
+  end
+
 protected
 
   ##
@@ -172,10 +176,6 @@ private
     self.time_off = time_off.rjust(4, '0')
     # [time_on, time_off].map! { |t| t.rjust(4, '0') }
     # [TODO] Consider using " sprintf '%04d' "
-  end
-
-  def day_off?
-    %w(RD OFF EX).any? { |n| name.include? n } if name
   end
 
   def spare?
