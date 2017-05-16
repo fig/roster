@@ -5,7 +5,6 @@ ruby '2.3.3'
 gem 'rails', '4.2.7'
 gem 'devise', '4.2.1'
 gem 'bcrypt', '3.1.7'
-gem 'faker', '1.4.2'
 gem 'carrierwave', '0.10.0'
 gem 'mini_magick', '3.8.0'
 gem 'fog', '1.32.0'
@@ -30,6 +29,7 @@ group :development do
   gem 'web-console'
 end
 group :development, :test do
+  gem 'faker', '~> 1.7'
   gem 'bullet'
   gem "letter_opener"
   gem 'annotate'
