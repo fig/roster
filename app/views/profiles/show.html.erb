@@ -28,7 +28,7 @@
   <%= date.strftime "%d" %>
 
   <% events.each do |event| %>
-    <div>
+    <div class="<%= event.turn.shift %>">
       <%= event.start_time.strftime "%H%M" %> -
       <%= link_to event.summary(roster_suffix), event.turn %>
     </div>
