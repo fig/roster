@@ -45,6 +45,7 @@ group :test do
   gem 'minitest-reporters', '~> 1.1.0'
   gem 'mini_backtrace', '0.1.3'
   gem 'guard-minitest', '2.3.1'
+  gem 'simplecov', :require => false
 end
 group :production do
   gem 'pg', '0.17.1'
