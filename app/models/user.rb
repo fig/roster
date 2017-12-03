@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   has_one :profile
   accepts_nested_attributes_for :profile
   delegate :roster_epoch, :to => :profile
+  delegate :preference, :to => :profile
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
