@@ -98,8 +98,6 @@ class Turn < ActiveRecord::Base
         suffix + name
       elsif spare?
         'A/R'
-      elsif day_off?
-        name
       else
         name
       end
